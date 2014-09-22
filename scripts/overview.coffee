@@ -25,6 +25,7 @@ class OverviewTab extends ReportTab
     isCollection = @model.isCollection()
 
 
+
     #show tables instead of graph for IE
     if window.d3
       d3IsPresent = true
