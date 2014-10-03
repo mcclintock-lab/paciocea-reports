@@ -368,3 +368,9 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.in-report-header {
+  margin-top: 20px;
+  margin-bottom: 2px;
+  margin-left: 10px;
+  font-weight: bold;
+}

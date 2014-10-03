@@ -1,9 +1,8 @@
-OverviewTab = require './overview.coffee'
-EconomicTab = require './economic.coffee'
-AdaptationTab = require './adaptation.coffee'
-BiodiversityTab = require './biodiversity.coffee'
+CurrentStateTab = require './currentstate.coffee'
+ScenarioOneTab = require './scenarioone.coffee'
+ScenarioTwoTab = require './scenariotwo.coffee'
 
 window.app.registerReport (report) ->
-  report.tabs [OverviewTab, EconomicTab, AdaptationTab, BiodiversityTab]
+  report.tabs [CurrentStateTab, ScenarioOneTab, ScenarioTwoTab]
   # path must be relative to dist/
   report.stylesheets ['./report.css']

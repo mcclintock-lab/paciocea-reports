@@ -8,14 +8,15 @@ partials = []
 for key, val of _partials
   partials[key.replace('node_modules/seasketch-reporting-api/', '')] = val
 
-class OverviewTab extends ReportTab
+class CurrentStateTab extends ReportTab
   # this is the name that will be displayed in the Tab
   name: 'Current State'
-  className: 'overview'
+  className: 'currentstate'
   timeout: 120000
-  template: templates.overview
+  template: templates.currentstate
   dependencies: [
     'Size'
+    'DeepSea'
   ]
 
   render: () ->
@@ -23,6 +24,8 @@ class OverviewTab extends ReportTab
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
 
+    mining = @recordSet('DeepSea', 'Mining').toArray()
+    mining = @processMiningData mining
     isCollection = @model.isCollection()
 
     #show tables instead of graph for IE
@@ -41,11 +44,23 @@ class OverviewTab extends ReportTab
       admin: @project.isAdmin window.user
       size: new_size
       isCollection: isCollection
+      mining:mining
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
 
-    
+  processMiningData: (mining_data) =>
+    new_mining_data = []
+    for md in mining_data
+      name = md.TYPE
+      size = @addCommas md.SIZE_SQKM
+      perc = md.PERC_TOT
+      if perc < 0.1
+        perc = "< 0.1"
+      new_mining_data.push {TYPE:name, SIZE_SQKM:size,PERC_TOT:perc}
+
+    return new_mining_data
+
   addCommas: (num_str) =>
     num_str += ''
     x = num_str.split('.')
@@ -56,4 +71,4 @@ class OverviewTab extends ReportTab
       x1 = x1.replace(rgx, '$1' + ',' + '$2')
     return x1 + x2
 
-module.exports = OverviewTab
+module.exports = CurrentStateTab
