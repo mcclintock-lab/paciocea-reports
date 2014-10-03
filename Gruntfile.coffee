@@ -51,9 +51,6 @@ module.exports = (grunt) ->
       report:
         files:
           'dist/report.css': 'stylesheets/report.less'
-      scenarios:
-        files:
-          'dist/scenario.css': 'stylesheets/scenario.less'
       main:
         files:
           'dist/main.css': 'node_modules/seasketch-reporting-api/stylesheets/common.less'
@@ -61,9 +58,6 @@ module.exports = (grunt) ->
       report:
         src: 'scripts/report.coffee'
         dest: 'dist/report.js'
-      scenario:
-        src: 'scripts/scenario.coffee'
-        dest: 'dist/scenario.js'
       generic:
         src: 'scripts/generic.coffee'
         dest: 'dist/generic.js'

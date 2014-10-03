@@ -10,13 +10,13 @@
 <div class="reportSection size">
   <h4>Size</h4>
   <p class="large">
-    This {{#isCollection}}collection{{/isCollection}}{{^isCollection}}sketch area{{/isCollection}} is <strong>{{size}} km</strong>.
+    This {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} is <strong>{{size}} km</strong>.
   </p>
 </div>
 
 <div class="reportSection tableContainer">
   <h4>Deep Sea </h4>
-  <p class="in-report-header">Deep Sea Minerals:</p>
+  <div class="in-report-header">Deep Sea Minerals:</div>
   <table> 
     <thead>
       <tr>
@@ -33,6 +33,9 @@
       {{/mining}}
     </thead>
   </table>
+
+  <div class="in-report-header">Habitats in Seamounts:</div>
+  <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.</strong>
 </div>
 
 <!-- <a href="#" data-toggle-node="53a0a31cd3f6064d2c17580c" data-visible="false">show layer</a> -->

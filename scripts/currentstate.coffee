@@ -26,6 +26,12 @@ class CurrentStateTab extends ReportTab
 
     mining = @recordSet('DeepSea', 'Mining').toArray()
     mining = @processMiningData mining
+
+    seamounts = @recordSet('DeepSea', 'Seamounts').toArray()
+    console.log("seamounts are ", seamounts)
+    num_seamounts = @getNumSeamounts seamounts
+    avg_depth_seamounts = @getAvgDepthSeamounts seamounts
+
     isCollection = @model.isCollection()
 
     #show tables instead of graph for IE
@@ -43,11 +49,21 @@ class CurrentStateTab extends ReportTab
       anyAttributes: @model.getAttributes().length > 0
       admin: @project.isAdmin window.user
       size: new_size
+      num_seamounts: num_seamounts
+      avg_depth_seamounts: avg_depth_seamounts
       isCollection: isCollection
       mining:mining
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
+
+  getNumSeamounts: (seamounts) =>
+    for sm in seamounts
+      return sm.NUMBER
+
+  getAvgDepthSeamounts: (seamounts) =>
+    for sm in seamounts
+      return sm.AVG_DEPTH
 
   processMiningData: (mining_data) =>
     new_mining_data = []
