@@ -91,13 +91,16 @@ class CurrentStateTab extends ReportTab
 
   onMoreResultsClick: (e) =>
     e?.preventDefault?()
-    selected = $(e.target).next()
+    target_link = $(e.target)
+    selected = target_link.next()
     selclass = selected.attr("class")
     if selclass== "hidden"
       selected.removeClass 'hidden'
       selected.addClass 'shown'
+      target_link.text("hide details")
     else
       selected.removeClass 'shown'
       selected.addClass 'hidden'
+      target_link.text("show details")
 
 module.exports = CurrentStateTab
