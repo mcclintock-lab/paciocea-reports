@@ -370,4 +370,28 @@
 }
 .reportView .in-report-header {
   font-weight: bold;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+.reportView .list-header {
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+.reportView .li {
+  padding-left: 15px;
+}
+.details {
+  margin-left: 10px;
+  margin-top: 5px;
+  margn-bottom: 5px;
+  color: #6c9390;
+  display: block;
+}
+.details .hidden {
+  display: none;
+}
+.details .shown {
+  display: block;
+  float: left;
 }

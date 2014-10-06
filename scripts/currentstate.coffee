@@ -18,6 +18,8 @@ class CurrentStateTab extends ReportTab
     'Size'
     'DeepSea'
   ]
+  events:
+    "click a.details":        'onMoreResultsClick'
 
   render: () ->
 
@@ -86,5 +88,16 @@ class CurrentStateTab extends ReportTab
     while rgx.test(x1)
       x1 = x1.replace(rgx, '$1' + ',' + '$2')
     return x1 + x2
+
+  onMoreResultsClick: (e) =>
+    e?.preventDefault?()
+    selected = $(e.target).next()
+    selclass = selected.attr("class")
+    if selclass== "hidden"
+      selected.removeClass 'hidden'
+      selected.addClass 'shown'
+    else
+      selected.removeClass 'shown'
+      selected.addClass 'hidden'
 
 module.exports = CurrentStateTab
