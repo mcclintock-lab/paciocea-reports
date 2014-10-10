@@ -362,6 +362,11 @@
 .reportView .reportSection.tableContainer p {
   padding: 10px;
 }
+.sorting_col {
+  background-color: #eee;
+  font-style: bold;
+  text-decoration: underline;
+}
 .reportView .demo .axis path,
 .reportView .demo .axis line {
   fill: none;
