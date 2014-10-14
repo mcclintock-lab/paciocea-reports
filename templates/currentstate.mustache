@@ -80,17 +80,27 @@
       <table data-paging="10">
         <thead>
           <tr>
-            <th style="width:150px;">Country</th>
-            <th>Catch in EEZ (in tonnes)</th>
-            <th>% of Total Catch in Region</th>
+            <th colspan="2"></th>
+            <th colspan="4">Catch (in tonnes)</th>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <th>% of Total Catch</th>
+            <th>Total</th>
+            <th>Demersal </th>
+            <th>Pelagic  </th>
+            <th>Invertebrate </th>
           </tr>
         </thead>
         <tbody>
           {{#coastal_catch}}
           <tr>
             <td>{{COUNTRY}}</td>
-            <td>{{TOT_TONS}}</td>
             <td>{{PERC_TOT}}</td>
+            <td>{{TOT_TONS}}</td>
+            <td>{{DEM_TONS}}</td>
+            <td>{{PEL_TONS}}</td>
+            <td>{{INV_TONS}}</td>
           </tr>
           {{/coastal_catch}}
         </tbody>
