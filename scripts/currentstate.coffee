@@ -27,7 +27,12 @@ class CurrentStateTab extends ReportTab
     msg = @recordSet("CoastalCatch", "ResultMsg")
     console.log("msg is ", msg)
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
-    
+    commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
+    subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
+    avg_sub_catch = @recordSet("CoastalCatch", "SubsistenceTable").float('AVG_KG_CAP')[0]
+    tot_sub_catch = @recordSet("CoastalCatch", "SubsistenceTable").float('TOT_KG_CAP')[0]
+    avg_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('AVG_KG_CAP')[0]
+    tot_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('TOT_KG_CAP')[0]
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
 
@@ -70,6 +75,14 @@ class CurrentStateTab extends ReportTab
       coastal_catch: coastal_catch
       isCollection: isCollection
       mining:mining
+      commercial_catch: commercial_catch
+      avg_comm_catch: avg_comm_catch
+      tot_comm_catch: tot_comm_catch
+
+      subsistence_catch: subsistence_catch
+      avg_sub_catch: avg_sub_catch
+      tot_sub_catch: tot_sub_catch
+
       d3IsPresent: d3IsPresent
 
     @$el.html @template.render(context, partials)

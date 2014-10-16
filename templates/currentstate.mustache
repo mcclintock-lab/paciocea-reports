@@ -77,6 +77,7 @@
       </table>
     {{/d3IsPresent}}
     {{^d3IsPresent}}
+      <div class="in-report-header">Coastal Catch:</div>
       <table data-paging="10">
         <thead>
           <tr>
@@ -106,5 +107,48 @@
         </tbody>
       </table>
     {{/d3IsPresent}}
+    <div class="in-report-header">Commercial Catch</div>
+      <p>
+        The average commercial catch across EEZs in this area of interest is <strong>{{avg_comm_catch}} kg per person</strong>. 
+        The average commercial catch within the entire PACIOCEA region is <strong>{{tot_comm_catch}} kg per person</strong>.
+      </p>
+      <table data-paging="10">
+        <thead>
+
+          <tr>
+            <th>Country</th>
+            <th>Catch (kg per capita)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#commercial_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{KG_CAP}}</td>
+          </tr>
+          {{/commercial_catch}}
+        </tbody>
+      </table>
+      <div class="in-report-header">Subsistence Catch</div>
+      <p>
+        The average subsistence catch across EEZs in this area of interest is <strong>{{avg_sub_catch}} kg per person</strong>. 
+        The average subsistence catch within the entire PACIOCEA region is <strong>{{tot_sub_catch}} kg per person</strong>.
+      </p>
+      <table data-paging="10">
+        <thead>
+
+          <tr>
+            <th>Country</th>
+            <th>Catch (kg per capita)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#commercial_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{KG_CAP}}</td>
+          </tr>
+          {{/commercial_catch}}
+        </tbody>
 </div>
 <!-- <a href="#" data-toggle-node="53a0a31cd3f6064d2c17580c" data-visible="false">show layer</a> -->
