@@ -10,7 +10,7 @@
 <div class="reportSection size">
   <h4>Size</h4>
   <p class="large">
-    This {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} is <strong>{{size}} km</strong>.
+    This {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} is <strong>{{size}} square kilometers</strong>.
   </p>
 </div>
 
@@ -48,9 +48,11 @@
     </div>
   </div>
   <div class="in-report-header">Habitats in Seamounts:</div>
-  <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.</strong> 
-  The average distance between seamounts within the {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of 
-  interest {{/isCollection}} is <strong>{{avg_dist_seamounts}} km</strong>.
+  <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.</strong>
+  {{#has_seamounts}} 
+    The average distance between seamounts within the {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of 
+    interest {{/isCollection}} is <strong>{{avg_dist_seamounts}} km</strong>.
+  {{/has_seamounts}}
   <div><a class="details" href="#">show details</a>
     <div class="hidden">
       <div class="list-header">The physical structure of some seamounts enables the formation of hydrographic features and current flows that can:</div>
@@ -108,10 +110,12 @@
       </table>
     {{/d3IsPresent}}
     <div class="in-report-header">Commercial Catch</div>
+      {{#has_comm_catch}}
       <p>
         The average commercial catch across EEZs in this area of interest is <strong>{{avg_comm_catch}} kg per person</strong>. 
         The average commercial catch within the entire PACIOCEA region is <strong>{{tot_comm_catch}} kg per person</strong>.
       </p>
+      {{/has_comm_catch}}
       <table data-paging="10">
         <thead>
 
@@ -130,10 +134,12 @@
         </tbody>
       </table>
       <div class="in-report-header">Subsistence Catch</div>
+      {{#has_subsistence_catch}}
       <p>
         The average subsistence catch across EEZs in this area of interest is <strong>{{avg_sub_catch}} kg per person</strong>. 
         The average subsistence catch within the entire PACIOCEA region is <strong>{{tot_sub_catch}} kg per person</strong>.
       </p>
+      {{/has_subsistence_catch}}
       <table data-paging="10">
         <thead>
 
