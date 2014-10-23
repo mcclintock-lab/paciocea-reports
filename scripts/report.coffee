@@ -1,8 +1,6 @@
 CurrentStateTab = require './currentstate.coffee'
-ScenarioOneTab = require './scenarioone.coffee'
-ScenarioTwoTab = require './scenariotwo.coffee'
 
 window.app.registerReport (report) ->
-  report.tabs [CurrentStateTab, ScenarioOneTab, ScenarioTwoTab]
+  report.tabs [CurrentStateTab]
   # path must be relative to dist/
   report.stylesheets ['./report.css']

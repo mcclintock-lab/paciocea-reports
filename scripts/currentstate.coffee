@@ -29,6 +29,7 @@ class CurrentStateTab extends ReportTab
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
     commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
     subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
+    ocean_catch = @recordSet("CoastalCatch", "OceanTable").toArray()
 
     if commercial_catch and commercial_catch?.length > 0
       avg_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('AVG_KG_CAP')[0]
@@ -42,6 +43,14 @@ class CurrentStateTab extends ReportTab
       has_subsistence_catch = true
     else
       has_subsistence_catch = false
+
+    if ocean_catch and ocean_catch?.length > 0
+      avg_ocean_catch = @recordSet("CoastalCatch", "OceanTable").float('SK_AVG')[0]
+      tot_ocean_catch = @recordSet("CoastalCatch", "OceanTable").float('RGN_TOT')[0]
+      tot_ocean_catch = @addCommas tot_ocean_catch
+      has_ocean_catch = true
+    else
+      has_ocean_catch = false
 
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
@@ -95,6 +104,10 @@ class CurrentStateTab extends ReportTab
       avg_sub_catch: avg_sub_catch
       tot_sub_catch: tot_sub_catch
 
+      has_ocean_catch: has_ocean_catch
+      ocean_catch: ocean_catch
+      avg_ocean_catch: avg_ocean_catch
+      tot_ocean_catch: tot_ocean_catch
       d3IsPresent: d3IsPresent
 
     @$el.html @template.render(context, partials)

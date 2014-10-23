@@ -16,7 +16,8 @@
 
 <div class="reportSection tableContainer">
   <h4>Deep Sea </h4>
-  <div class="in-report-header">Deep Sea Minerals:</div>
+  <div class="in-report-header">Deep Sea Minerals: <a href="#" data-toggle-node="544873b21a2e13c151406216" data-visible="false">show mineral layers
+  </a></div>
   <table> 
     <thead>
       <tr>
@@ -47,7 +48,8 @@
       </p>
     </div>
   </div>
-  <div class="in-report-header">Habitats in Seamounts:</div>
+  <div class="in-report-header">Habitats in Seamounts: <a href="#" data-toggle-node="544873b21a2e13c151406215" data-visible="false">show seamount layer
+  </a></div>
   <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.</strong>
   {{#has_seamounts}} 
     The average distance between seamounts within the {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of 
@@ -64,8 +66,9 @@
     </div>
   </div>
 </div>
+
 <div class="reportSection tableContainer">
-  <h4>Coastal Catch </h4>
+  <h4>Coastal Fisheries </h4>
     {{#d3IsPresent}}
       <table data-paging="10" class="coastal_catch_table"> 
         <thead>
@@ -79,7 +82,7 @@
       </table>
     {{/d3IsPresent}}
     {{^d3IsPresent}}
-      <div class="in-report-header">Coastal Catch:</div>
+      <div class="in-report-header">Coastal Catch: <a href="#" data-toggle-node="544873b21a2e13c151406228" data-visible="false">show coastal catch layer</a></div>
       <table data-paging="10">
         <thead>
           <tr>
@@ -109,7 +112,7 @@
         </tbody>
       </table>
     {{/d3IsPresent}}
-    <div class="in-report-header">Commercial Catch</div>
+    <div class="in-report-header">Commercial Catch:  <a href="#" data-toggle-node="544873b21a2e13c15140622a" data-visible="false">show commercial/subsistence catch layer</a></div>
       {{#has_comm_catch}}
       <p>
         The average commercial catch across EEZs in this area of interest is <strong>{{avg_comm_catch}} kg per person</strong>. 
@@ -133,7 +136,7 @@
           {{/commercial_catch}}
         </tbody>
       </table>
-      <div class="in-report-header">Subsistence Catch</div>
+      <div class="in-report-header">Subsistence Catch:</div>
       {{#has_subsistence_catch}}
       <p>
         The average subsistence catch across EEZs in this area of interest is <strong>{{avg_sub_catch}} kg per person</strong>. 
@@ -142,19 +145,58 @@
       {{/has_subsistence_catch}}
       <table data-paging="10">
         <thead>
-
           <tr>
             <th>Country</th>
             <th>Catch (kg per capita)</th>
           </tr>
         </thead>
         <tbody>
-          {{#commercial_catch}}
+          {{#subsistence_catch}}
           <tr>
             <td>{{COUNTRY}}</td>
             <td>{{KG_CAP}}</td>
           </tr>
-          {{/commercial_catch}}
+          {{/subsistence_catch}}
         </tbody>
+      </table>
 </div>
-<!-- <a href="#" data-toggle-node="53a0a31cd3f6064d2c17580c" data-visible="false">show layer</a> -->
+
+<div class="reportSection tableContainer">
+  <h4>Oceanic Fisheries <a href="#" data-toggle-node="544873b21a2e13c151406223" data-visible="false">show oceanic catch layers</a>
+  </h4>
+      <p>
+        The average oceanic catch across EEZs in this area of interest is <strong>{{avg_ocean_catch}} tonnes.</strong>
+        The total ocean catch within the entire PACIOCEA region is <strong>{{tot_ocean_catch}} tonnes</strong>.
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th colspan="2"></th>
+            <th colspan="2">Domestic Catch</th>
+            <th colspan="2">Foreign Catch</th>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <th>Total (tonnes)</th>
+            <th>tonnes </th>
+            <th>% of catch in EEZ</th>
+            <th>tonnes</th>
+            <th>% of catch in EEZ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#ocean_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{SK_TOT}}</td>
+            <td>{{SK_DOM}}</td>
+            <td>{{DOM_PERC}}</td>
+            <td>{{SK_FRN}}</td>
+            <td>{{FRN_PERC}}</td>
+          </tr>
+          {{/ocean_catch}}
+        </tbody>
+      </table>
+</div>
+
+<!-- <a href="#" data-toggle-node="544873b21a2e13c151406228" data-visible="false">show layer</a> -->
