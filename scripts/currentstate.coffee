@@ -67,6 +67,9 @@ class CurrentStateTab extends ReportTab
     avg_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_AVG')[0]
     tot_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_TOT')[0]    
 
+    gdp_value = @recordSet("Fisheries", "GDPTable").toArray() 
+    export_value = @recordSet("Fisheries", "ExportTable").toArray() 
+
 
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
@@ -139,6 +142,8 @@ class CurrentStateTab extends ReportTab
       avg_fisheries_foreign_catch:avg_fisheries_foreign_catch
       tot_fisheries_foreign_catch:tot_fisheries_foreign_catch
 
+      export_value: export_value
+      gdp_value: gdp_value
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}

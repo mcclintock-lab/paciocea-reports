@@ -273,4 +273,56 @@
           </tr>
         </tbody>
       </table>
+      <p>
+        <strong>Fisheries and Aquaculture share of GDP:</strong>
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Number of Countries with GDP Share:</th>
+            <th colspan="1"></th>
+          </tr>
+          <tr>
+            <th>Below 5%</th>
+            <th>Between 5% and 10%</th>
+            <th>Average GDP Share in Area of Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#gdp_value}}
+          <tr>
+            <td>{{BELOW5}}</td>
+            <td>{{ABOVE5}}</td>
+            <td>{{AVG}}</td>
+          </tr>
+          {{/gdp_value}}
+        </tbody>
+      </table>
+      <p>
+        <strong>Fisheries and Aquaculture share of Total Export:</strong>
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Number of Countries with Export Share:</th>
+            <th colspan="1"></th>
+          </tr>
+          <tr>
+            <th>Below 30%</th>
+            <th>Between 30% and 70%</th>
+            <th>Over 70%</th>
+            <th>Average Export Share in Area of Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#export_value}}
+          <tr>
+            <td>{{BELOW30}}</td>
+            <td>{{BELOW70}}</td>
+            <td>{{ABOVE70}}</td>
+            <td>{{AVG}}</td>
+          </tr>
+          {{/export_value}}
+        </tbody>
+      </table>
 </div>
