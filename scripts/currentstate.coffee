@@ -18,6 +18,7 @@ class CurrentStateTab extends ReportTab
     'CoastalCatch'
     'Size'
     'DeepSea'
+    'Fisheries'
   ]
 
   events:
@@ -51,6 +52,21 @@ class CurrentStateTab extends ReportTab
       has_ocean_catch = true
     else
       has_ocean_catch = false
+
+    fisheries = @recordSet("Fisheries", "FisheriesTable").toArray()
+
+    avg_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_AVG')[0]
+    tot_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_TOT')[0]
+
+    avg_fisheries_aqua_catch = @recordSet("Fisheries", "FisheriesTable").float('AQUA_AVG')[0]
+    tot_fisheries_aqua_catch = @recordSet("Fisheries", "FisheriesTable").float('AQUA_TOT')[0]
+
+    avg_fisheries_domestic_catch = @recordSet("Fisheries", "FisheriesTable").float('DOM_AVG')[0]
+    tot_fisheries_domestic_catch = @recordSet("Fisheries", "FisheriesTable").float('DOM_TOT')[0]
+
+    avg_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_AVG')[0]
+    tot_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_TOT')[0]    
+
 
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
@@ -109,6 +125,20 @@ class CurrentStateTab extends ReportTab
       avg_ocean_catch: avg_ocean_catch
       tot_ocean_catch: tot_ocean_catch
       d3IsPresent: d3IsPresent
+
+      fisheries: fisheries
+      avg_fisheries_coastal_catch:avg_fisheries_coastal_catch
+      tot_fisheries_coastal_catch:tot_fisheries_coastal_catch
+
+      avg_fisheries_aqua_catch:avg_fisheries_aqua_catch
+      tot_fisheries_aqua_catch:tot_fisheries_aqua_catch
+
+      avg_fisheries_domestic_catch:avg_fisheries_domestic_catch
+      tot_fisheries_domestic_catch:tot_fisheries_domestic_catch
+
+      avg_fisheries_foreign_catch:avg_fisheries_foreign_catch
+      tot_fisheries_foreign_catch:tot_fisheries_foreign_catch
+
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}

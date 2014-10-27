@@ -199,4 +199,77 @@
       </table>
 </div>
 
-<!-- <a href="#" data-toggle-node="544873b21a2e13c151406228" data-visible="false">show layer</a> -->
+<div class="reportSection tableContainer">
+  <h4>Fisheries Economy</h4>
+      <p>
+        <strong>Fisheries economy values in each country:</strong>
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th colspan="1"></th>
+            <th colspan="4">Catch in MUSD</th>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <th>Coast</th>
+            <th>Aquaculture </th>
+            <th>Domestic</th>
+            <th>Foreign</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#fisheries}}
+          <tr>
+            <td>{{Country}}</td>
+            <td>{{Coast}}</td>
+            <td>{{Aqua}}</td>
+            <td>{{Dom}}</td>
+            <td>{{Foreign}}</td>
+          </tr>
+          {{/fisheries}}
+        </tbody>
+      </table>
+      <p>
+        <strong>Average fisheries economy values in the area of interest:</strong>
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th>Coast</th>
+            <th>Aquaculture</th>
+            <th>Domestic</th>
+            <th>Foreign</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{avg_fisheries_coastal_catch}}</td>
+            <td>{{avg_fisheries_aqua_catch}}</td>
+            <td>{{avg_fisheries_domestic_catch}}</td>
+            <td>{{avg_fisheries_foreign_catch}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Total fisheries economy value in PACIOCEA region:</strong>
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th>Coast</th>
+            <th>Aquaculture</th>
+            <th>Domestic</th>
+            <th>Foreign</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{tot_fisheries_coastal_catch}}</td>
+            <td>{{tot_fisheries_aqua_catch}}</td>
+            <td>{{tot_fisheries_domestic_catch}}</td>
+            <td>{{tot_fisheries_foreign_catch}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
