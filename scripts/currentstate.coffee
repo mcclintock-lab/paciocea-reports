@@ -19,6 +19,7 @@ class CurrentStateTab extends ReportTab
     'Size'
     'DeepSea'
     'Fisheries'
+    'PacioceaAquaculture'
   ]
 
   events:
@@ -54,6 +55,7 @@ class CurrentStateTab extends ReportTab
       has_ocean_catch = false
 
     fisheries = @recordSet("Fisheries", "FisheriesTable").toArray()
+    aqua = @recordSet("PacioceaAquaculture", "aq").toArray()
 
     avg_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_AVG')[0]
     tot_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_TOT')[0]
@@ -69,7 +71,6 @@ class CurrentStateTab extends ReportTab
 
     gdp_value = @recordSet("Fisheries", "GDPTable").toArray() 
     export_value = @recordSet("Fisheries", "ExportTable").toArray() 
-
 
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
@@ -144,6 +145,7 @@ class CurrentStateTab extends ReportTab
 
       export_value: export_value
       gdp_value: gdp_value
+      aqua:aqua
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}

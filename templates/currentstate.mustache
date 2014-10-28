@@ -325,4 +325,41 @@
           {{/export_value}}
         </tbody>
       </table>
+
+</div>
+<div class="reportSection tableContainer">
+  <h4>Aquaculture <a href="#" data-toggle-node="544873b21a2e13c15140622d" data-visible="false">show aquaculture layer</a>
+  </h4>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="6">Species (Tonnes):</th>
+            <th colspan="2">Total Tonnes In:</th>
+          </tr>
+          <tr>
+            <th>Prawns</th>
+            <th>Oyster</th>
+            <th>Shrimp</th>
+            <th>Crab</th>
+            <th>Tilapia</th>
+            <th>Milkfish</th>
+            <th>Area of Interest</th>
+            <th>PACIOCEA Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#aqua}}
+          <tr>
+            <td>{{Prawn}}</td>
+            <td>{{Oyster}}</td>
+            <td>{{Shrimp}}</td>
+            <td>{{Crab}}</td>
+            <td>{{Tilapia}}</td>
+            <td>{{Milkfish}}</td>
+            <td>{{AOI_TOT}}</td>
+            <td>{{TOT_TONS}}</td>
+          </tr>
+          {{/aqua}}
+        </tbody>
+      </table>
 </div>
