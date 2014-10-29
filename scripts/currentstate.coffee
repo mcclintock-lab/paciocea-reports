@@ -91,13 +91,6 @@ class CurrentStateTab extends ReportTab
 
     isCollection = @model.isCollection()
 
-    #show tables instead of graph for IE
-    if window.d3
-      d3IsPresent = true
-    else
-      d3IsPresent = false
-
-    d3IsPresent = false
     attributes = @model.getAttributes()
     
     context =
@@ -128,7 +121,6 @@ class CurrentStateTab extends ReportTab
       ocean_catch: ocean_catch
       avg_ocean_catch: avg_ocean_catch
       tot_ocean_catch: tot_ocean_catch
-      d3IsPresent: d3IsPresent
 
       fisheries: fisheries
       avg_fisheries_coastal_catch:avg_fisheries_coastal_catch
@@ -152,6 +144,7 @@ class CurrentStateTab extends ReportTab
     @setupTableSorting(coastal_catch, '.coastal_catch_values', '.coastal_catch_table', col_values, 'coastal-catch-row', 'catch')
     @enableLayerTogglers()
 
+  #not used yet
   setupTableSorting: (data, tbodyName, tableName, data_value, col_values, row_name, selected_col_prefix) =>
     index = 0
     default_sort_key = ""
