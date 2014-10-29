@@ -350,3 +350,42 @@
         </tbody>
       </table>
 </div>
+
+<div class="reportSection tableContainer">
+  <h4>Tourism</h4>
+    <div class="in-report-header">Change in Tourism:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Number of Countries where Tourism Decreased</th>
+            <th>Number of Countries where Tourism Increased by < 100%</th>
+            <th>Number of Countries where Tourism Increased by > 100%</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#tourist_arrivals}}
+          <tr>
+            <td>{{DEC}}</td>
+            <td>{{LESS100}}</td>
+            <td>{{MORE100}}</td>
+          </tr>
+          {{/tourist_arrivals}}
+        </tbody>
+      </table>
+
+    <div class="in-report-header">Tourism vs Population:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Number of Countries where number of Tourists visiting is Greater than Population</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#tourist_pop}}
+          <tr>
+            <td>{{TOUR_POP}}</td>
+          </tr>
+          {{/tourist_pop}}
+        </tbody>
+      </table>
+</div>

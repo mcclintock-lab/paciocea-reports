@@ -20,6 +20,7 @@ class CurrentStateTab extends ReportTab
     'DeepSea'
     'Fisheries'
     'PacioceaAquaculture'
+    'Tourism'
   ]
 
   events:
@@ -80,7 +81,9 @@ class CurrentStateTab extends ReportTab
 
 
     seamounts = @recordSet('DeepSea', 'Seamounts').toArray()
-    
+    tourist_arrivals = @recordSet('Tourism', 'TouristArrivals').toArray()
+    tourist_pop = @recordSet('Tourism', 'TouristPopulation').toArray()
+
     num_seamounts = @getNumSeamounts seamounts
     has_seamounts = num_seamounts > 1
     avg_depth_seamounts = @getAvgDepthSeamounts seamounts
@@ -138,6 +141,9 @@ class CurrentStateTab extends ReportTab
       export_value: export_value
       gdp_value: gdp_value
       aqua:aqua
+
+      tourist_arrivals:tourist_arrivals
+      tourist_pop:tourist_pop
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}
