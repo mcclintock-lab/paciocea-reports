@@ -57,17 +57,37 @@ class CurrentStateTab extends ReportTab
     fisheries = @recordSet("Fisheries", "FisheriesTable").toArray()
     aqua = @recordSet("PacioceaAquaculture", "aq").toArray()
 
-    avg_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_AVG')[0]
-    tot_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_TOT')[0]
+    #this feels gross. in order to not have to add another record set in the gp, each row in
+    #the table has the avg/total added to it. so if its a single row table, get the value,
+    #otherwise get the first one. better way to do this?
+    avg_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_AVG')
+    if avg_fisheries_coastal_catch?.length > 1
+      avg_fisheries_coastal_catch = avg_fisheries_coastal_catch[0]
 
-    avg_fisheries_aqua_catch = @recordSet("Fisheries", "FisheriesTable").float('AQUA_AVG')[0]
-    tot_fisheries_aqua_catch = @recordSet("Fisheries", "FisheriesTable").float('AQUA_TOT')[0]
+    tot_fisheries_coastal_catch = @recordSet("Fisheries", "FisheriesTable").float('CST_TOT')
+    if tot_fisheries_coastal_catch?.length > 1
+      tot_fisheries_coastal_catch = tot_fisheries_coastal_catch[0]
 
-    avg_fisheries_domestic_catch = @recordSet("Fisheries", "FisheriesTable").float('DOM_AVG')[0]
-    tot_fisheries_domestic_catch = @recordSet("Fisheries", "FisheriesTable").float('DOM_TOT')[0]
+    avg_fisheries_aqua_catch = @recordSet("Fisheries", "FisheriesTable").float('AQUA_AVG')
+    if avg_fisheries_aqua_catch?.length > 1
+      avg_fisheries_aqua_catch = avg_fisheries_aqua_catch[0]
+    tot_fisheries_aqua_catch = @recordSet("Fisheries", "FisheriesTable").float('AQUA_TOT')
+    if tot_fisheries_aqua_catch?.length > 1
+      tot_fisheries_aqua_catch = tot_fisheries_aqua_catch[0]
 
-    avg_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_AVG')[0]
-    tot_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_TOT')[0]    
+    avg_fisheries_domestic_catch = @recordSet("Fisheries", "FisheriesTable").float('DOM_AVG')
+    if avg_fisheries_domestic_catch?.length > 1
+      avg_fisheries_domestic_catch = avg_fisheries_domestic_catch[0]
+    tot_fisheries_domestic_catch = @recordSet("Fisheries", "FisheriesTable").float('DOM_TOT')
+    if tot_fisheries_domestic_catch?.length > 1
+      tot_fisheries_domestic_catch = tot_fisheries_domestic_catch[0]
+
+    avg_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_AVG')
+    if avg_fisheries_foreign_catch?.length > 1
+      avg_fisheries_foreign_catch = avg_fisheries_foreign_catch[0]
+    tot_fisheries_foreign_catch = @recordSet("Fisheries", "FisheriesTable").float('FRN_TOT')   
+    if tot_fisheries_foreign_catch?.length > 1
+      tot_fisheries_foreign_catch = tot_fisheries_foreign_catch[0]
 
     gdp_value = @recordSet("Fisheries", "GDPTable").toArray() 
     export_value = @recordSet("Fisheries", "ExportTable").toArray() 
@@ -271,6 +291,7 @@ class CurrentStateTab extends ReportTab
     active_page = tgt_table.selectAll(".active a")
     if active_page and active_page[0] and active_page[0][0]
       active_page[0][0].click()
+
 
   getNumSeamounts: (seamounts) =>
     for sm in seamounts
