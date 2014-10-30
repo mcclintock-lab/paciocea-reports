@@ -1,5 +1,4 @@
 ReportTab = require 'reportTab'
-ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
 _partials = require '../node_modules/seasketch-reporting-api/templates/templates.js'
@@ -28,7 +27,7 @@ class CurrentStateTab extends ReportTab
 
   render: () ->
     msg = @recordSet("CoastalCatch", "ResultMsg")
-
+    console.log("msg: ", msg)
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
     commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
     subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
@@ -279,7 +278,7 @@ class CurrentStateTab extends ReportTab
 
   getAvgDepthSeamounts: (seamounts) =>
     for sm in seamounts
-      return sm.AVG_DEPTH
+      return Math.round(sm.AVG_DEPTH)
 
   getAvgDistSeamounts: (seamounts) =>
     for sm in seamounts
