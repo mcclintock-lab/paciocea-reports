@@ -20,6 +20,8 @@ class CurrentStateTab extends ReportTab
     'Fisheries'
     'PacioceaAquaculture'
     'Tourism'
+    'Energy'
+    'Habitat'
   ]
 
   events:
@@ -27,11 +29,26 @@ class CurrentStateTab extends ReportTab
 
   render: () ->
     msg = @recordSet("CoastalCatch", "ResultMsg")
-    console.log("msg: ", msg)
+    
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
     commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
     subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
     ocean_catch = @recordSet("CoastalCatch", "OceanTable").toArray()
+    renewable_energy = @recordSet("Energy", "RenewableEnergy").toArray()
+
+    if renewable_energy?.length > 0
+      has_renewable_energy = true
+      avg_renewable_energy = renewable_energy[0].AVG
+    else
+
+      has_renewable_energy = false
+
+    fuel_import = @recordSet("Energy", "FuelImport").toArray()
+    if fuel_import?.length > 0
+      has_fuel_import = true
+      avg_fuel_import = fuel_import[0].AVG
+    else 
+      has fuel_import = false
 
     if commercial_catch and commercial_catch?.length > 0
       avg_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('AVG_KG_CAP')[0]
@@ -111,6 +128,18 @@ class CurrentStateTab extends ReportTab
     avg_dist_seamounts = @getAvgDistSeamounts seamounts
     avg_dist_seamounts = @addCommas(Math.round(avg_dist_seamounts))
 
+
+    habitat_data = @recordSet('Habitat', 'HabitatPresence').toArray()
+
+    if habitat_data?.length > 0
+      has_coral = @recordSet('Habitat', 'HabitatPresence').bool('Coral')
+      has_seagrass = @recordSet('Habitat', 'HabitatPresence').bool('Seagrass')
+      has_mangroves = @recordSet('Habitat', 'HabitatPresence').bool('Mangrove')
+    else
+      has_coral = false
+      has_seagrass = false
+      has_mangroves = false
+    has_no_habitats = !has_coral and !has_seagrass and !has_mangroves
     isCollection = @model.isCollection()
 
     attributes = @model.getAttributes()
@@ -163,6 +192,18 @@ class CurrentStateTab extends ReportTab
 
       tourist_arrivals:tourist_arrivals
       tourist_pop:tourist_pop
+
+      renewable_energy: renewable_energy
+      avg_renewable_energy: avg_renewable_energy
+      has_renewable_energy: has_renewable_energy
+      fuel_import: fuel_import
+      avg_fuel_import: avg_fuel_import
+      has_fuel_import: has_fuel_import
+
+      has_coral: has_coral
+      has_mangroves: has_mangroves
+      has_seagrass: has_seagrass
+      has_no_habitats: has_no_habitats
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}
@@ -293,9 +334,11 @@ class CurrentStateTab extends ReportTab
       active_page[0][0].click()
 
 
+
   getNumSeamounts: (seamounts) =>
     for sm in seamounts
       return sm.NUMBER
+    return 0
 
   getAvgDepthSeamounts: (seamounts) =>
     for sm in seamounts

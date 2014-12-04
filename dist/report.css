@@ -378,6 +378,9 @@
   padding-left: 5px;
   padding-top: 10px;
 }
+.reportView .in-report-node {
+  padding-left: 10px;
+}
 .reportView .list-header {
   font-weight: bold;
   margin-left: 10px;
