@@ -15,6 +15,7 @@ class AdaptationTab extends BaseReportTab
   template: templates.adaptation
   dependencies: [
     'Habitat'
+    'Population'
   ]
 
 
@@ -30,8 +31,11 @@ class AdaptationTab extends BaseReportTab
       has_seagrass = false
       has_mangroves = false
     has_no_habitats = !has_coral and !has_seagrass and !has_mangroves
-    isCollection = @model.isCollection()
 
+    isCollection = @model.isCollection()
+    numpeople = @recordSet('Population', 'Population').float('Population')
+    numpeople = @addCommas numpeople
+    percpeople = @recordSet('Population', 'Population').float('PERC_POP')
     #show tables instead of graph for IE
     if window.d3
       d3IsPresent = true
@@ -52,6 +56,8 @@ class AdaptationTab extends BaseReportTab
       has_mangroves: has_mangroves
       has_seagrass: has_seagrass
       has_no_habitats: has_no_habitats
+      numpeople: numpeople
+      percpeople: percpeople
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
