@@ -7,7 +7,21 @@
 {{/sketchClass.deleted}}
 
 
-<div class="reportSection size">
-  <h4>Adaptation</h4>
-  <p>TBD</p>
+<div class="reportSection">
+  <h4>Habitats</h4>
+  {{#has_coral}}
+    <p class="large green-check">The area of interest includes <strong>coral reefs</strong>.</p>
+    <div style="margin-left:50px;"><a href="#" data-toggle-node="5450960a4eb580f13c02c8fd" data-visible="false">show coral reef layer</a></div>
+  {{/has_coral}}
+  {{#has_seagrass}}
+    <p class="large green-check">The area of interest includes <strong>seagrass</strong>.</p>
+    <div style="margin-left:50px;"><a href="#" data-toggle-node="5450960a4eb580f13c02c8fb" data-visible="false">show seagrass layer</a></div>
+  {{/has_seagrass}}
+  {{#has_mangroves}}
+    <p class="large green-check">The area of interest includes <strong>mangroves</strong>.</p>
+    <div style="margin-left:50px;"><a href="#" data-toggle-node="5450960a4eb580f13c02c8f9" data-visible="false">show mangrove layer</a></div>
+  {{/has_mangroves}}
+  {{#has_no_habitats}}
+    <p class="large">There are no <strong>mangroves, seagrass, or coral habitats</strong> within the area of interest.</p> 
+  {{/has_no_habitats}}
 </div>

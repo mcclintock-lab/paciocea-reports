@@ -1,0 +1,456 @@
+{{#sketchClass.deleted}}
+<div class="alert alert-warn" style="margin-bottom:10px;">
+  This sketch was created using the "{{sketchClass.name}}" template, which is
+  no longer available. You will not be able to copy this sketch or make new
+  sketches of this type.
+</div>
+{{/sketchClass.deleted}}
+
+
+<div class="reportSection size">
+  <h4>Size</h4>
+  <p class="large">
+    This {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} is <strong>{{size}} square kilometers</strong>.
+  </p>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Deep Sea </h4>
+  <div class="in-report-header">Deep Sea Minerals: <a href="#" data-toggle-node="5450a05b4eb580f13c02c9d3" data-visible="false">show mineral layers
+  </a></div>
+  <table> 
+    <thead>
+      <tr>
+        <th style="width:170px;">Type</th>
+        <th>Area (sq. km)</a></th>
+        <th>Area (% of total region)</th>
+      </tr>
+      {{#mining}}
+      <tr>
+        <td>{{TYPE}}</td>
+        <td>{{SIZE_SQKM}}</td>
+        <td>{{PERC_TOT}}</td>
+      </tr>
+      {{/mining}}
+    </thead>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <div class="list-header">The deep sea resources available for extraction are divided into 4 types:</div>
+      <ol>
+        <li>Polymetallic Nodules (Manganese, Copper, Nickel, Cobalt) - 4,000 - 6,000 m depth</li>
+        <li>Cobalt-rich Manganese Crusts (Cobalt) - 800 - 3,000 m depth</li>
+        <li>Sulphide Deposits (Copper) - 1,500 - 4,000 m depth</li>
+        <li>Deep-sea mud (rare earth elements, yttrium) - 2,000 -6,000 m depth.</li>                                               
+      </ol>
+      <p>
+          The DSM deposits are higher in mineral content than on-land deposits. Typical value of a tonne of land based ore is 50-200 USD, for sea floor deposits it’s 500-1500 USD. DSM mining in the PACIOCEA  has a strong potential.
+      </p>
+    </div>
+  </div>
+  <div class="in-report-header">Habitats in Seamounts: <a href="#" data-toggle-node="5450a05b4eb580f13c02c9d6" data-visible="false">show seamount layer
+  </a></div>
+  <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.</strong>
+  {{#has_seamounts}} 
+    The average distance between seamounts within the {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of 
+    interest {{/isCollection}} is <strong>{{avg_dist_seamounts}} km</strong>.
+  {{/has_seamounts}}
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <div class="list-header">The physical structure of some seamounts enables the formation of hydrographic features and current flows that can:</div>
+      <ol>
+        <li>Enhance local production through upwelling </li>
+        <li>Keep species and production processes concentrated over the seamount  </li>
+        <li>Have a concentration of zooplankton and mesopelagic fish meaning rich feeding grounds and spawning areas for fish and higher predators, and hence fisheries. Seamounts are a hotspot for biodiverstiy but are still understudied.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Coastal Fisheries </h4>
+
+      <div class="in-report-header">Coastal Catch: <a href="#" data-toggle-node="5450a05b4eb580f13c02c9e9" data-visible="false">show coastal catch layer</a></div>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th colspan="2"></th>
+            <th colspan="4">Catch (in tonnes)</th>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <th>% of Total Catch</th>
+            <th>Total</th>
+            <th>Demersal </th>
+            <th>Pelagic  </th>
+            <th>Invertebrate </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#coastal_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{PERC_TOT}}</td>
+            <td>{{TOT_TONS}}</td>
+            <td>{{DEM_TONS}}</td>
+            <td>{{PEL_TONS}}</td>
+            <td>{{INV_TONS}}</td>
+          </tr>
+          {{/coastal_catch}}
+        </tbody>
+      </table>
+    <div class="in-report-header">Commercial Catch:  <a href="#" data-toggle-node="5450a05b4eb580f13c02c9eb" data-visible="false">show commercial/subsistence catch layer</a></div>
+      {{#has_comm_catch}}
+      <p>
+        The average commercial catch across EEZs in this area of interest is <strong>{{avg_comm_catch}} kg per person</strong>. 
+        The average commercial catch within the entire PACIOCEA region is <strong>{{tot_comm_catch}} kg per person</strong>.
+      </p>
+      {{/has_comm_catch}}
+      <table data-paging="10">
+        <thead>
+
+          <tr>
+            <th>Country</th>
+            <th>Catch (kg per capita)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#commercial_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{KG_CAP}}</td>
+          </tr>
+          {{/commercial_catch}}
+        </tbody>
+      </table>
+      <div class="in-report-header">Subsistence Catch:</div>
+      {{#has_subsistence_catch}}
+      <p>
+        The average subsistence catch across EEZs in this area of interest is <strong>{{avg_sub_catch}} kg per person</strong>. 
+        The average subsistence catch within the entire PACIOCEA region is <strong>{{tot_sub_catch}} kg per person</strong>.
+      </p>
+      {{/has_subsistence_catch}}
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Catch (kg per capita)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#subsistence_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{KG_CAP}}</td>
+          </tr>
+          {{/subsistence_catch}}
+        </tbody>
+      </table>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Oceanic Fisheries <a href="#" data-toggle-node="5450a05b4eb580f13c02c9e6" data-visible="false">show oceanic catch layers</a>
+  </h4>
+      <p>
+        The average oceanic catch across EEZs in this area of interest is <strong>{{avg_ocean_catch}} tonnes.</strong>
+        The total ocean catch within the entire PACIOCEA region is <strong>{{tot_ocean_catch}} tonnes</strong>.
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th colspan="2"></th>
+            <th colspan="2">Domestic Catch</th>
+            <th colspan="2">Foreign Catch</th>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <th>Total (tonnes)</th>
+            <th>tonnes </th>
+            <th>% of catch in EEZ</th>
+            <th>tonnes</th>
+            <th>% of catch in EEZ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#ocean_catch}}
+          <tr>
+            <td>{{COUNTRY}}</td>
+            <td>{{SK_TOT}}</td>
+            <td>{{SK_DOM}}</td>
+            <td>{{DOM_PERC}}</td>
+            <td>{{SK_FRN}}</td>
+            <td>{{FRN_PERC}}</td>
+          </tr>
+          {{/ocean_catch}}
+        </tbody>
+      </table>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Fisheries Economy<a href="#" data-toggle-node="5450a05b4eb580f13c02c9e1" data-visible="false">
+      show fisheries economy layers</a></h4>
+      <p>
+        <strong>Fisheries economy values in each country:</strong>
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th colspan="1"></th>
+            <th colspan="4">Catch in MUSD</th>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <th>Coast</th>
+            <th>Aquaculture </th>
+            <th>Domestic</th>
+            <th>Foreign</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#fisheries}}
+          <tr>
+            <td>{{Country}}</td>
+            <td>{{Coast}}</td>
+            <td>{{Aqua}}</td>
+            <td>{{Dom}}</td>
+            <td>{{Foreign}}</td>
+          </tr>
+          {{/fisheries}}
+        </tbody>
+      </table>
+      <p>
+        <strong>Average fisheries economy values in the area of interest:</strong>
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th>Coast</th>
+            <th>Aquaculture</th>
+            <th>Domestic</th>
+            <th>Foreign</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{avg_fisheries_coastal_catch}}</td>
+            <td>{{avg_fisheries_aqua_catch}}</td>
+            <td>{{avg_fisheries_domestic_catch}}</td>
+            <td>{{avg_fisheries_foreign_catch}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Total fisheries economy value in PACIOCEA region:</strong>
+      </p>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th>Coast</th>
+            <th>Aquaculture</th>
+            <th>Domestic</th>
+            <th>Foreign</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{tot_fisheries_coastal_catch}}</td>
+            <td>{{tot_fisheries_aqua_catch}}</td>
+            <td>{{tot_fisheries_domestic_catch}}</td>
+            <td>{{tot_fisheries_foreign_catch}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Fisheries and Aquaculture share of GDP:</strong>
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Number of Countries with GDP Share:</th>
+            <th colspan="1"></th>
+          </tr>
+          <tr>
+            <th>Below 5%</th>
+            <th>Between 5% and 10%</th>
+            <th>Average GDP Share in Area of Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#gdp_value}}
+          <tr>
+            <td>{{BELOW5}}</td>
+            <td>{{ABOVE5}}</td>
+            <td>{{AVG}}</td>
+          </tr>
+          {{/gdp_value}}
+        </tbody>
+      </table>
+      <p>
+        <strong>Fisheries and Aquaculture share of Total Export:</strong>
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Number of Countries with Export Share:</th>
+            <th colspan="1"></th>
+          </tr>
+          <tr>
+            <th>Below 30%</th>
+            <th>Between 30% and 70%</th>
+            <th>Over 70%</th>
+            <th>Average Export Share in Area of Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#export_value}}
+          <tr>
+            <td>{{BELOW30}}</td>
+            <td>{{BELOW70}}</td>
+            <td>{{ABOVE70}}</td>
+            <td>{{AVG}}</td>
+          </tr>
+          {{/export_value}}
+        </tbody>
+      </table>
+
+</div>
+<div class="reportSection tableContainer">
+  <h4>Aquaculture <a href="#" data-toggle-node="5450a05b4eb580f13c02c9ee" data-visible="false">show aquaculture layer</a>
+  </h4>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="6">Species (Tonnes):</th>
+            <th colspan="2">Total Tonnes In:</th>
+          </tr>
+          <tr>
+            <th>Prawns</th>
+            <th>Oyster</th>
+            <th>Shrimp</th>
+            <th>Crab</th>
+            <th>Tilapia</th>
+            <th>Milkfish</th>
+            <th>Area of Interest</th>
+            <th>PACIOCEA Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#aqua}}
+          <tr>
+            <td>{{Prawn}}</td>
+            <td>{{Oyster}}</td>
+            <td>{{Shrimp}}</td>
+            <td>{{Crab}}</td>
+            <td>{{Tilapia}}</td>
+            <td>{{Milkfish}}</td>
+            <td>{{AOI_TOT}}</td>
+            <td>{{TOT_TONS}}</td>
+          </tr>
+          {{/aqua}}
+        </tbody>
+      </table>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Tourism</h4>
+    <div class="in-report-header">Change in Tourism:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Number of Countries where Tourism Decreased</th>
+            <th>Number of Countries where Tourism Increased by < 100%</th>
+            <th>Number of Countries where Tourism Increased by > 100%</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#tourist_arrivals}}
+          <tr>
+            <td>{{DEC}}</td>
+            <td>{{LESS100}}</td>
+            <td>{{MORE100}}</td>
+          </tr>
+          {{/tourist_arrivals}}
+        </tbody>
+      </table>
+
+    <div class="in-report-header">Tourism vs Population:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Number of Countries where number of Tourists visiting is Greater than Population</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#tourist_pop}}
+          <tr>
+            <td>{{TOUR_POP}}</td>
+          </tr>
+          {{/tourist_pop}}
+        </tbody>
+      </table>
+</div>
+<div class="reportSection tableContainer">
+  <h4>Energy</h4>
+    <div class="in-report-header">Renewable Energy: &nbsp<a href="#" data-toggle-node="5450a05b4eb580f13c02c9d2" data-visible="false">show renewable energy layer</a></div>
+    {{#has_renewable_energy}}
+      <p>Countries within the sketch generate an average of <strong>{{avg_renewable_energy}}%</strong> of their energy from renewable sources.</p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="4">Percentage of Energy Generated by Renewables</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Less than 40%</th>
+            <th>Between 40% and 80%</th>
+            <th>More than 80%</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#renewable_energy}}
+          <tr>
+            <td>Number of Countries</td>
+            <td>{{UNDER_40}}</td>
+            <td>{{OVER_40}}</td>
+            <td>{{OVER_80}}</td>
+          </tr>
+          {{/renewable_energy}}
+        </tbody>
+      </table>
+    {{/has_renewable_energy}}
+    {{^has_renewable_energy}}
+      <p class="large">No Renewable Energy Data Available</p>
+    {{/has_renewable_energy}}
+    <div class="in-report-header">Fuel Imports: &nbsp<a href="#" data-toggle-node="5450a05b4eb580f13c02c9d0" data-visible="false">show fuel import layer</a></div>
+      {{#has_fuel_import}}
+        <p>Countries within the sketch import an average of <strong>{{avg_fuel_import}}%</strong> of their fuel.</p>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="4">Percentage of Fuel from Imports</th>
+            </tr>
+              <tr>
+                <th></th> 
+                <th>Less than 5%</th>
+                <th>Between 5% and 20%</th>
+                <th>More than 20%</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#fuel_import}}
+            <tr>
+              <td>Number of Countries</td>
+              <td>{{UNDER_5}}</td>
+              <td>{{OVER_5}}</td>
+              <td>{{OVER_20}}</td>
+            </tr>
+            {{/fuel_import}}
+          </tbody>
+        </table>
+      {{/has_fuel_import}}
+      {{^has_fuel_import}}
+        <p class="large">No Fuel Import Data Available</p>
+      {{/has_fuel_import}}
+</div>
+
+
