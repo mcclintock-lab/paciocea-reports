@@ -12,7 +12,7 @@ class EconomyTab extends BaseReportTab
   name: 'Sustainable Economy'
   className: 'economy'
   timeout: 120000
-  template: templates.currentstate
+  template: templates.economy
 
   dependencies: [
     'CoastalCatch'
