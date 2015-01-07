@@ -116,8 +116,17 @@ class EconomyTab extends BaseReportTab
     seamounts = @recordSet('DeepSea', 'Seamounts').toArray()
     tourist_arrivals = @recordSet('Tourism', 'TouristArrivals').toArray()
     tourist_pop = @recordSet('Tourism', 'TouristPopulation').toArray()
+    gdp_percent = @recordSet('Tourism', 'GDPPercent').float('GDP')
+    if gdp_percent > 0.1
+      gdp_percent = gdp_percent.toFixed(1)
 
+    intl_tourist_arrival_total = @recordSet('Tourism', 'InternationalArrivals').float('Arrivals')
+    intl_tourist_arrival_perc = @recordSet('Tourism', 'InternationalArrivals').float('IA_PERC')
+    if intl_tourist_arrival_perc > 0.1
+      intl_tourist_arrival_perc = intl_tourist_arrival_perc.toFixed(1)
+      
     num_seamounts = @getNumSeamounts seamounts
+
     has_seamounts = num_seamounts > 1
     avg_depth_seamounts = @getAvgDepthSeamounts seamounts
     avg_depth_seamounts = @addCommas avg_depth_seamounts
@@ -185,6 +194,9 @@ class EconomyTab extends BaseReportTab
       fuel_import: fuel_import
       avg_fuel_import: avg_fuel_import
       has_fuel_import: has_fuel_import
+      gdp_percent: gdp_percent
+      intl_tourist_arrival_total: intl_tourist_arrival_total
+      intl_tourist_arrival_perc: intl_tourist_arrival_perc
 
 
     @$el.html @template.render(context, partials)
