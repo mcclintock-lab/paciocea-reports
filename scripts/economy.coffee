@@ -121,10 +121,20 @@ class EconomyTab extends BaseReportTab
       gdp_percent = gdp_percent.toFixed(1)
 
     intl_tourist_arrival_total = @recordSet('Tourism', 'InternationalArrivals').float('Arrivals')
+    has_international_tourists = intl_tourist_arrival_total > 0
+    if has_international_tourists
+      intl_tourist_arrival_total = @addCommas intl_tourist_arrival_total
+      
     intl_tourist_arrival_perc = @recordSet('Tourism', 'InternationalArrivals').float('IA_PERC')
     if intl_tourist_arrival_perc > 0.1
       intl_tourist_arrival_perc = intl_tourist_arrival_perc.toFixed(1)
       
+    cruise_ships = @recordSet('Tourism', 'Cruiseships').float('Ports')
+    has_cruiseship_visits = cruise_ships > 0
+    cruise_ships_perc = @recordSet('Tourism', 'Cruiseships').float('CR_PERC')
+    if cruise_ships_perc > 0.1
+      cruise_ships_perc = cruise_ships_perc.toFixed(1)
+
     num_seamounts = @getNumSeamounts seamounts
 
     has_seamounts = num_seamounts > 1
@@ -197,7 +207,10 @@ class EconomyTab extends BaseReportTab
       gdp_percent: gdp_percent
       intl_tourist_arrival_total: intl_tourist_arrival_total
       intl_tourist_arrival_perc: intl_tourist_arrival_perc
-
+      has_international_tourists: has_international_tourists
+      cruise_ships: cruise_ships
+      cruise_ships_perc: cruise_ships_perc
+      has_cruiseship_visits: has_cruiseship_visits
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}

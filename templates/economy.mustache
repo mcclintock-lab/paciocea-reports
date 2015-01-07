@@ -350,11 +350,21 @@
         </tbody>
       </table>
 </div>
-
 <div class="reportSection tableContainer">
   <h4>Tourism</h4>
     <p class="large">
-      Tourism accounted for an average of <strong>{{gdp_percent}}%</strong> of the GDP of the countries within the sketch. This includes <strong>{{intl_tourist_arrival_total}}</strong> international tourists, which is <strong>{{intl_tourist_arrival_perc}}%</strong> of the international tourists within the PACIOCEA region.
+      Tourism accounted for an average of <strong>{{gdp_percent}}%</strong> of the GDP of the countries within the sketch. {{#has_cruiseship_visits}}This includes <strong>{{cruise_ships}}</strong> cruise ship visits, which is <strong>
+      {{cruise_ships_perc}}%</strong> of the cruise ship visits within the PACIOCEA region.
+      {{/has_cruiseship_visits}}
+      {{^has_cruiseship_visits}}There were <strong>no</strong> cruiseship visits to countries within the sketch.{{/has_cruiseship_visits}}
+    </p>
+    <p class="large">
+      {{#has_international_tourists}}
+      There were <strong>{{intl_tourist_arrival_total}}</strong> international tourists, which is <strong>
+      {{intl_tourist_arrival_perc}}%</strong> of the international tourists within the PACIOCEA region. 
+      {{/has_international_tourists}}
+      {{^has_international_tourists}} There were <strong>no</strong> international tourists to the countries within the
+      sketch.{{/has_international_tourists}}
     </p>
     <div class="in-report-header">Change in Tourism:</div>
       <table>
