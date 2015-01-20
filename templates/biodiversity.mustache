@@ -7,7 +7,38 @@
 {{/sketchClass.deleted}}
 
 
-<div class="reportSection size">
+<div class="reportSection tableContainer">
   <h4>Biodiversity</h4>
-  <p>TBD</p>
+    <table> 
+    <thead>
+      <tr>
+        <th>Habitat</th>
+        <th>Area (sq. km)</a></th>
+        <th>Area (% of total region)</th>
+      </tr>
+     </thead>
+     <tbody> 
+      <tr>
+  		<td>Coral</td>
+        <td>{{coral_area}}</td>
+        <td>{{coral_perc}}</td>
+      </tr>
+      <tr>
+  		<td>Mangroves</td>
+        <td>{{mangroves_area}}</td>
+        <td>{{mangroves_perc}}</td>
+      </tr>
+       <tr>
+  		<td>Seagrass</td>
+        <td>{{seagrass_area}}</td>
+        <td>{{seagrass_perc}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="large">
+  	The table shows the area of the habitat type (in square kilometers) within the {{^isCollection}}sketch,
+  	{{/isCollection}}
+  	{{#isCollection}}collection,{{/isCollection}} as well as the percent of the total PACIOCEA habitat found within each {{^isCollection}}sketch.{{/isCollection}}
+  	{{#isCollection}}collection.{{/isCollection}}
+  </p>
 </div>

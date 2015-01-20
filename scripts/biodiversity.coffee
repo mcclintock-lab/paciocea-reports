@@ -14,10 +14,19 @@ class BiodiversityTab extends BaseReportTab
   timeout: 120000
   template: templates.biodiversity
   dependencies: [
-
+    'Biodiversity'
   ]
 
   render: () ->
+
+    coral_area = @recordSet('Biodiversity', 'Coral').float('AREA_KM')
+    coral_perc =  @recordSet('Biodiversity', 'Coral').float('AREA_PERC')
+
+    mangroves_area = @recordSet('Biodiversity', 'Mangroves').float('AREA_KM')
+    mangroves_perc =  @recordSet('Biodiversity', 'Mangroves').float('AREA_PERC')
+
+    seagrass_area = @recordSet('Biodiversity', 'Seagrass').float('AREA_KM')
+    seagrass_perc =  @recordSet('Biodiversity', 'Seagrass').float('AREA_PERC')
 
     isCollection = @model.isCollection()
 
@@ -36,6 +45,12 @@ class BiodiversityTab extends BaseReportTab
       anyAttributes: @model.getAttributes().length > 0
       admin: @project.isAdmin window.user
       isCollection: isCollection
+      coral_area: coral_area
+      coral_perc: coral_perc
+      mangroves_area: mangroves_area
+      mangroves_perc: mangroves_perc
+      seagrass_area: seagrass_area
+      seagrass_perc: seagrass_perc
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
