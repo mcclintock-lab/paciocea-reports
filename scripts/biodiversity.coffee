@@ -28,6 +28,8 @@ class BiodiversityTab extends BaseReportTab
     seagrass_area = @recordSet('Biodiversity', 'Seagrass').float('AREA_KM')
     seagrass_perc =  @recordSet('Biodiversity', 'Seagrass').float('AREA_PERC')
 
+    mpa_cats = @recordSet('Biodiversity', 'MPACategories').toArray()
+    hasMPAs = mpa_cats?.length > 0
     isCollection = @model.isCollection()
 
     #show tables instead of graph for IE
@@ -51,6 +53,8 @@ class BiodiversityTab extends BaseReportTab
       mangroves_perc: mangroves_perc
       seagrass_area: seagrass_area
       seagrass_perc: seagrass_perc
+      mpa_cats:mpa_cats
+      hasMPAs: hasMPAs
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()

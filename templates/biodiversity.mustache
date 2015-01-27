@@ -42,3 +42,40 @@
   	{{#isCollection}}collection.{{/isCollection}}
   </p>
 </div>
+{{#hasMPAs}}
+<div class="reportSection tableContainer">
+  <h4>Marine Protected Areas</h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>IUCN Category</th>
+        <th>Number of MPAs</th>
+        <th>Area (sq. km)</th>
+        <th>Area (%)</th>
+      </tr>
+     </thead>
+      {{#mpa_cats}}
+      <tr>
+        <td>{{CAT}}</td>
+        <td>{{NUM_MPAS}}</td>
+        <td>{{MPA_AREA}}</td>
+        <td>{{MPA_PERC}}</td>
+      </tr>
+      {{/mpa_cats}}
+  </table>
+  <p class="large">
+    The table shows the number and area of Marine Protected Areas (MPAs) for each IUCN category within the {{^isCollection}}sketch,
+    {{/isCollection}}
+    {{#isCollection}}collection,{{/isCollection}} as well as the aerial percent of the {{^isCollection}}sketch{{/isCollection}}
+    {{#isCollection}}collection{{/isCollection}} within each category.
+  </p>
+</div>
+{{/hasMPAs}}
+{{^hasMPAs}}
+<div class="reportSection">
+  <h4>Marine Protected Areas</h4>
+  <p class="large">There are <strong>no</strong> Marine Protected Areas within this {{^isCollection}}sketch{{/isCollection}}
+    {{#isCollection}}collection{{/isCollection}}
+  </p>
+</div>
+{{/hasMPAs}}
