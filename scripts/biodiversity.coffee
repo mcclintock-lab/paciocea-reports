@@ -14,7 +14,8 @@ class BiodiversityTab extends BaseReportTab
   timeout: 120000
   template: templates.biodiversity
   dependencies: [
-    'Biodiversity'
+    'Biodiversity',
+    'DeepSea'
   ]
 
   render: () ->
@@ -32,6 +33,16 @@ class BiodiversityTab extends BaseReportTab
     hasMPAs = mpa_cats?.length > 0
     isCollection = @model.isCollection()
 
+
+    seamounts = @recordSet('DeepSea', 'Seamounts').toArray()
+    num_seamounts = @getNumSeamounts seamounts
+
+    has_seamounts = num_seamounts > 1
+    avg_depth_seamounts = @getAvgDepthSeamounts seamounts
+    avg_depth_seamounts = @addCommas avg_depth_seamounts
+
+    avg_dist_seamounts = @getAvgDistSeamounts seamounts
+    avg_dist_seamounts = @addCommas(Math.round(avg_dist_seamounts))
     #show tables instead of graph for IE
     if window.d3
       d3IsPresent = true
@@ -55,6 +66,10 @@ class BiodiversityTab extends BaseReportTab
       seagrass_perc: seagrass_perc
       mpa_cats:mpa_cats
       hasMPAs: hasMPAs
+      has_seamounts: has_seamounts
+      num_seamounts: num_seamounts
+      avg_depth_seamounts: avg_depth_seamounts
+      avg_dist_seamounts: avg_dist_seamounts
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()

@@ -29,8 +29,8 @@ class EconomyTab extends BaseReportTab
     msg = @recordSet("CoastalCatch", "ResultMsg")
     
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
-    commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
-    subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
+    #commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
+    #subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
     ocean_catch = @recordSet("CoastalCatch", "OceanTable").toArray()
     renewable_energy = @recordSet("Energy", "RenewableEnergy").toArray()
 
@@ -48,6 +48,8 @@ class EconomyTab extends BaseReportTab
     else 
       has fuel_import = false
 
+    comm_sub_catch = @recordSet("CoastalCatch", "CommercialSubTable").toArray()
+    '''
     if commercial_catch and commercial_catch?.length > 0
       avg_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('AVG_KG_CAP')[0]
       tot_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('TOT_KG_CAP')[0]
@@ -60,6 +62,7 @@ class EconomyTab extends BaseReportTab
       has_subsistence_catch = true
     else
       has_subsistence_catch = false
+    '''
 
     if ocean_catch and ocean_catch?.length > 0
       avg_ocean_catch = @recordSet("CoastalCatch", "OceanTable").float('SK_AVG')[0]
@@ -113,7 +116,7 @@ class EconomyTab extends BaseReportTab
     mining = @recordSet('DeepSea', 'Mining').toArray()
     mining = @processMiningData mining
 
-    seamounts = @recordSet('DeepSea', 'Seamounts').toArray()
+    
     tourist_arrivals = @recordSet('Tourism', 'TouristArrivals').toArray()
     tourist_pop = @recordSet('Tourism', 'TouristPopulation').toArray()
     gdp_percent = @recordSet('Tourism', 'GDPPercent').float('GDP')
@@ -135,14 +138,6 @@ class EconomyTab extends BaseReportTab
     if cruise_ships_perc > 0.1
       cruise_ships_perc = cruise_ships_perc.toFixed(1)
 
-    num_seamounts = @getNumSeamounts seamounts
-
-    has_seamounts = num_seamounts > 1
-    avg_depth_seamounts = @getAvgDepthSeamounts seamounts
-    avg_depth_seamounts = @addCommas avg_depth_seamounts
-
-    avg_dist_seamounts = @getAvgDistSeamounts seamounts
-    avg_dist_seamounts = @addCommas(Math.round(avg_dist_seamounts))
 
 
     isCollection = @model.isCollection()
@@ -156,22 +151,12 @@ class EconomyTab extends BaseReportTab
       anyAttributes: @model.getAttributes().length > 0
       admin: @project.isAdmin window.user
       size: new_size
-      has_seamounts: has_seamounts
-      num_seamounts: num_seamounts
-      avg_depth_seamounts: avg_depth_seamounts
-      avg_dist_seamounts: avg_dist_seamounts
+
+
       coastal_catch: coastal_catch
       isCollection: isCollection
       mining:mining
-      commercial_catch: commercial_catch
-      has_comm_catch: has_comm_catch
-      avg_comm_catch: avg_comm_catch
-      tot_comm_catch: tot_comm_catch
-
-      subsistence_catch: subsistence_catch
-      has_subsistence_catch: has_subsistence_catch
-      avg_sub_catch: avg_sub_catch
-      tot_sub_catch: tot_sub_catch
+      comm_sub_catch: comm_sub_catch
 
       has_ocean_catch: has_ocean_catch
       ocean_catch: ocean_catch

@@ -42,6 +42,26 @@
   	{{#isCollection}}collection.{{/isCollection}}
   </p>
 </div>
+<div class="reportSection">
+  <h4>Habitats in Seamounts <a href="#" data-toggle-node="5450a05b4eb580f13c02c9d6" data-visible="false">show seamount layer
+  </a></h4>
+  <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.
+  </strong>
+  {{#has_seamounts}} 
+    The average distance between seamounts within the {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of 
+    interest {{/isCollection}} is <strong>{{avg_dist_seamounts}} km</strong>.
+  {{/has_seamounts}}
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <div class="list-header">The physical structure of some seamounts enables the formation of hydrographic features and current flows that can:</div>
+      <ol>
+        <li>Enhance local production through upwelling </li>
+        <li>Keep species and production processes concentrated over the seamount  </li>
+        <li>Have a concentration of zooplankton and mesopelagic fish meaning rich feeding grounds and spawning areas for fish and higher predators, and hence fisheries. Seamounts are a hotspot for biodiverstiy but are still understudied.</li>
+      </ol>
+    </div>
+  </div>
+</div>
 {{#hasMPAs}}
 <div class="reportSection tableContainer">
   <h4>Marine Protected Areas</h4>
