@@ -27,11 +27,9 @@ class EconomyTab extends BaseReportTab
 
   render: () ->
     msg = @recordSet("CoastalCatch", "ResultMsg")
-    
+
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
-    #commercial_catch = @recordSet("CoastalCatch", "CommercialTable").toArray()
-    #subsistence_catch = @recordSet("CoastalCatch", "SubsistenceTable").toArray()
-    ocean_catch = @recordSet("CoastalCatch", "OceanTable").toArray()
+
     renewable_energy = @recordSet("Energy", "RenewableEnergy").toArray()
 
     if renewable_energy?.length > 0
@@ -49,28 +47,7 @@ class EconomyTab extends BaseReportTab
       has fuel_import = false
 
     comm_sub_catch = @recordSet("CoastalCatch", "CommercialSubTable").toArray()
-    '''
-    if commercial_catch and commercial_catch?.length > 0
-      avg_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('AVG_KG_CAP')[0]
-      tot_comm_catch = @recordSet("CoastalCatch", "CommercialTable").float('TOT_KG_CAP')[0]
-      has_comm_catch = true
-    else
-      has_comm_catch = false
-    if subsistence_catch and subsistence_catch?.length > 0
-      avg_sub_catch = @recordSet("CoastalCatch", "SubsistenceTable").float('AVG_KG_CAP')[0]
-      tot_sub_catch = @recordSet("CoastalCatch", "SubsistenceTable").float('TOT_KG_CAP')[0]
-      has_subsistence_catch = true
-    else
-      has_subsistence_catch = false
-    '''
-
-    if ocean_catch and ocean_catch?.length > 0
-      avg_ocean_catch = @recordSet("CoastalCatch", "OceanTable").float('SK_AVG')[0]
-      tot_ocean_catch = @recordSet("CoastalCatch", "OceanTable").float('RGN_TOT')[0]
-      tot_ocean_catch = @addCommas tot_ocean_catch
-      has_ocean_catch = true
-    else
-      has_ocean_catch = false
+    ocean_catch = @recordSet("CoastalCatch", "OceanTable").toArray()
 
     fisheries = @recordSet("Fisheries", "FisheriesTable").toArray()
     aqua = @recordSet("PacioceaAquaculture", "aq").toArray()
@@ -157,11 +134,7 @@ class EconomyTab extends BaseReportTab
       isCollection: isCollection
       mining:mining
       comm_sub_catch: comm_sub_catch
-
-      has_ocean_catch: has_ocean_catch
       ocean_catch: ocean_catch
-      avg_ocean_catch: avg_ocean_catch
-      tot_ocean_catch: tot_ocean_catch
 
       fisheries: fisheries
       avg_fisheries_coastal_catch:avg_fisheries_coastal_catch
