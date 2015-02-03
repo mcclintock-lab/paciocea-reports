@@ -31,20 +31,7 @@ class EconomyTab extends BaseReportTab
     coastal_catch = @recordSet("CoastalCatch", "CoastalCatchTable").toArray()
 
     renewable_energy = @recordSet("Energy", "RenewableEnergy").toArray()
-
-    if renewable_energy?.length > 0
-      has_renewable_energy = true
-      avg_renewable_energy = renewable_energy[0].AVG
-    else
-
-      has_renewable_energy = false
-
     fuel_import = @recordSet("Energy", "FuelImport").toArray()
-    if fuel_import?.length > 0
-      has_fuel_import = true
-      avg_fuel_import = fuel_import[0].AVG
-    else 
-      has fuel_import = false
 
     comm_sub_catch = @recordSet("CoastalCatch", "CommercialSubTable").toArray()
     ocean_catch = @recordSet("CoastalCatch", "OceanTable").toArray()
@@ -113,11 +100,7 @@ class EconomyTab extends BaseReportTab
       tourist_pop:tourist_pop
 
       renewable_energy: renewable_energy
-      avg_renewable_energy: avg_renewable_energy
-      has_renewable_energy: has_renewable_energy
       fuel_import: fuel_import
-      avg_fuel_import: avg_fuel_import
-      has_fuel_import: has_fuel_import
       gdp_percent: gdp_percent
       intl_tourist_arrival_total: intl_tourist_arrival_total
       intl_tourist_arrival_perc: intl_tourist_arrival_perc
