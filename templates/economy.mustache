@@ -173,7 +173,6 @@
         </div>
       </div>
 </div>
-</div>
 <div class="reportSection tableContainer">
   <h4>Aquaculture <a href="#" data-toggle-node="5450a05b4eb580f13c02c9ee" data-visible="false">show aquaculture layer</a>
   </h4>
@@ -285,25 +284,41 @@
         </div>
       </div>
 
-
+</div>
 
 <div class="reportSection tableContainer">
   <h4>Tourism</h4>
     <p class="large">
-      Tourism accounted for an average of <strong>{{gdp_percent}}%</strong> of the GDP of the countries within the sketch. {{#has_cruiseship_visits}}This includes <strong>{{cruise_ships}}</strong> cruise ship visits, which is <strong>
-      {{cruise_ships_perc}}%</strong> of the cruise ship visits within the PACIOCEA region.
-      {{/has_cruiseship_visits}}
-      {{^has_cruiseship_visits}}There were <strong>no</strong> cruiseship visits to countries within the sketch.{{/has_cruiseship_visits}}
+      Tourists in PICTs mostly come from Asian countries to Micronesia (Japan, South Korea, Taiwan and Honk-Kong represent 70 to 90% of the tourists in Micronesia) and Australia/New Zealand for the southern part of the PACIOCEA area.
     </p>
-    <p class="large">
-      {{#has_international_tourists}}
-      There were <strong>{{intl_tourist_arrival_total}}</strong> international tourists, which is <strong>
-      {{intl_tourist_arrival_perc}}%</strong> of the international tourists within the PACIOCEA region. 
-      {{/has_international_tourists}}
-      {{^has_international_tourists}} There were <strong>no</strong> international tourists to the countries within the
-      sketch.{{/has_international_tourists}}
-    </p>
-    <div class="in-report-header">Change in Tourism:</div>
+
+    <div class="in-report-header">International tourist arrivals (2012):
+    </br><a href="#" data-toggle-node="5450a05b4eb580f13c02c9f9" data-visible="false">show international arrival layer</a>
+    &nbsp &nbsp<a href="#" data-toggle-node="5450a05b4eb580f13c02c9f1" data-visible="false">show population layer</a></div>
+    <!--perc pop: 5450a05b4eb580f13c02c9f1-->
+      <table>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>International tourist arrivals</th>
+            <th>Country population</th>
+            <th>Ratio between tourist arrivals and total population (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#intl_tourist_arrivals}}
+          <tr>
+            <td>{{Country}}</td>
+            <td>{{Arrivals}}</td>
+            <td>{{Population}}</td>
+            <td>{{IA_PERC}}</td>
+          </tr>
+          {{/intl_tourist_arrivals}}
+        </tbody>
+      </table>
+
+    <div class="in-report-header">Summary of Change in Tourism:
+    &nbsp<a href="#" data-toggle-node="5450a05b4eb580f13c02c9f3" data-visible="false">show layer</a></div>
       <table>
         <thead>
           <tr>
@@ -322,23 +337,58 @@
           {{/tourist_arrivals}}
         </tbody>
       </table>
-
-    <div class="in-report-header">Tourism vs Population:</div>
+      <div class="in-report-header">Change in tourism for each country:
+        &nbsp<a href="#" data-toggle-node="5450a05b4eb580f13c02c9f7" data-visible="false">show layer</a></div>
       <table>
         <thead>
           <tr>
-            <th>Number of Countries where number of Tourists visiting is Greater than Population</th>
+            <th>Country</th>
+            <th>Change in tourism (%)</th>
           </tr>
         </thead>
         <tbody>
-          {{#tourist_pop}}
+          {{#tourist_arrivals_by_country}}
           <tr>
-            <td>{{TOUR_POP}}</td>
+            <td>{{Country}}</td>
+            <td>{{Tour_arr}}</td>
           </tr>
-          {{/tourist_pop}}
+          {{/tourist_arrivals_by_country}}
         </tbody>
       </table>
+      <div><a class="details" href="#">show details</a>
+        <div class="hidden">
+          <p>
+              Very different situations characterize the region, but no sub-regional tendencies can be easily identified. Are remoteness, level of infrastructures, cost of transport, etc. important driving forces for the future of touristic destinations?
+          </p>
+        </div>
+      </div>
+
+      <div class="in-report-header">Tourism economic impact:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Added value of tourism (% of GDP)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#tourism_gdp}}
+          <tr>
+            <td>{{Country}}</td>
+            <td>{{GDP}}</td>
+          </tr>
+          {{/tourism_gdp}}
+        </tbody>
+      </table>
+      <div><a class="details" href="#">show details</a>
+        <div class="hidden">
+          <p>
+              Tourism’s economic impact varies in large proportions throughout the Pacific Islands region. Few populated touristic destinations or low GDP countries are likely to rely on tourism, such as Fiji and Guam.
+          </p>
+        </div>
+      </div>
 </div>
+
 <div class="reportSection tableContainer">
   <h4>Energy</h4>
       <div class="in-report-header">Fuel Imports: &nbsp<a href="#" data-toggle-node="5450a05b4eb580f13c02c9d0" 

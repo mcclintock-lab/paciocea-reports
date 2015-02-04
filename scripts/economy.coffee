@@ -47,19 +47,18 @@ class EconomyTab extends BaseReportTab
 
     mining = @recordSet('DeepSea', 'Mining').toArray()
     mining = @processMiningData mining
-
     
-    tourist_arrivals = @recordSet('Tourism', 'TouristArrivals').toArray()
-    tourist_pop = @recordSet('Tourism', 'TouristPopulation').toArray()
-    gdp_percent = @recordSet('Tourism', 'GDPPercent').float('GDP')
-    if gdp_percent > 0.1
-      gdp_percent = gdp_percent.toFixed(1)
+    tourism_res = @recordSet('Tourism', 'ResultMsg')
+    
 
-    intl_tourist_arrival_total = @recordSet('Tourism', 'InternationalArrivals').float('Arrivals')
-    has_international_tourists = intl_tourist_arrival_total > 0
-    if has_international_tourists
-      intl_tourist_arrival_total = @addCommas intl_tourist_arrival_total
-      
+    tourist_arrivals = @recordSet('Tourism', 'TouristArrivals').toArray()
+    tourist_arrivals_by_country = @recordSet('Tourism', 'TourismArrivalByCountry').toArray()
+    intl_tourist_arrivals = @recordSet('Tourism', 'InternationalArrivals').toArray()
+    tourism_gdp = @recordSet('Tourism', 'GDPPercent').toArray()
+
+    '''
+    intl_tourist_arrivals = @recordSet('Tourism', 'InternationalArrivals')
+    
     intl_tourist_arrival_perc = @recordSet('Tourism', 'InternationalArrivals').float('IA_PERC')
     if intl_tourist_arrival_perc > 0.1
       intl_tourist_arrival_perc = intl_tourist_arrival_perc.toFixed(1)
@@ -70,7 +69,7 @@ class EconomyTab extends BaseReportTab
     if cruise_ships_perc > 0.1
       cruise_ships_perc = cruise_ships_perc.toFixed(1)
 
-
+    '''
 
     isCollection = @model.isCollection()
 
@@ -84,7 +83,6 @@ class EconomyTab extends BaseReportTab
       admin: @project.isAdmin window.user
       size: new_size
 
-
       coastal_catch: coastal_catch
       isCollection: isCollection
       mining:mining
@@ -97,17 +95,13 @@ class EconomyTab extends BaseReportTab
       aqua:aqua
 
       tourist_arrivals:tourist_arrivals
-      tourist_pop:tourist_pop
+      tourist_arrivals_by_country: tourist_arrivals_by_country
+      tourism_gdp: tourism_gdp
+      intl_tourist_arrivals: intl_tourist_arrivals
 
       renewable_energy: renewable_energy
       fuel_import: fuel_import
-      gdp_percent: gdp_percent
-      intl_tourist_arrival_total: intl_tourist_arrival_total
-      intl_tourist_arrival_perc: intl_tourist_arrival_perc
-      has_international_tourists: has_international_tourists
-      cruise_ships: cruise_ships
-      cruise_ships_perc: cruise_ships_perc
-      has_cruiseship_visits: has_cruiseship_visits
+
 
     @$el.html @template.render(context, partials)
     col_values = {'catch_country':"COUNTRY", 'catch_in_eez':"TOT_TONS", 'catch_perc':"PERC_TOT"}
