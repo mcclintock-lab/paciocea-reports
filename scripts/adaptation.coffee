@@ -14,24 +14,11 @@ class AdaptationTab extends BaseReportTab
   timeout: 120000
   template: templates.adaptation
   dependencies: [
-    'Habitat'
     'Population'
   ]
 
 
   render: () ->
-    habitat_data = @recordSet('Habitat', 'HabitatPresence').toArray()
-
-    if habitat_data?.length > 0
-      has_coral = @recordSet('Habitat', 'HabitatPresence').bool('Coral')
-      has_seagrass = @recordSet('Habitat', 'HabitatPresence').bool('Seagrass')
-      has_mangroves = @recordSet('Habitat', 'HabitatPresence').bool('Mangrove')
-    else
-      has_coral = false
-      has_seagrass = false
-      has_mangroves = false
-    has_no_habitats = !has_coral and !has_seagrass and !has_mangroves
-
     isCollection = @model.isCollection()
     numpeople = @recordSet('Population', 'Population').float('Population')
     numpeople = @addCommas numpeople
@@ -51,11 +38,7 @@ class AdaptationTab extends BaseReportTab
       anyAttributes: @model.getAttributes().length > 0
       admin: @project.isAdmin window.user
       isCollection: isCollection
-      
-      has_coral: has_coral
-      has_mangroves: has_mangroves
-      has_seagrass: has_seagrass
-      has_no_habitats: has_no_habitats
+
       numpeople: numpeople
       percpeople: percpeople
 
