@@ -42,8 +42,40 @@
   	{{#isCollection}}collection.{{/isCollection}}
   </p>
 </div>
+<div class="reportSection tableContainer">
+  <h4>Deep Coral</h4>
+    <table> 
+    <thead>
+      <tr>
+        <th></th>
+        <th>High probability for at least 1 of 2 species</a></th>
+        <th>Medium probability for at least 1 of 2 species</th>
+        <th>Low probability for either species</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#deep_coral}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{HIGH}}</td>
+          <td>{{MED}}</td>
+          <td>{{LOW}}</td>
+        </tr>
+      {{/deep_coral}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+        Some species of deep sea coral can build real reefs and consequently, constitute habitats for a large range of deep species. These species are extremely vulnerable for threat from deep fisheries or deep sea mining. Davis and Guinotte (2011) performed a modeling approach for 2 habitat building coral species: Enallopsammia rostrata and Solenosmilia variabilis.
+      </p>
+    </div>
+  </div>
+</div>
+
+
 <div class="reportSection">
-  <h4>Habitats in Seamounts <a href="#" data-toggle-node="54dbe1e5fa94e697759d2564" data-visible="false">show seamount layer
+  <h4>Seamounts <a href="#" data-toggle-node="54dbe1e5fa94e697759d2564" data-visible="false">show seamount layer
   </a></h4>
   <p style="padding-top:5px;"> The {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of interest {{/isCollection}} includes <strong>{{num_seamounts}} seamounts</strong> with an average depth of <strong>{{avg_depth_seamounts}} meters.
   </strong>
@@ -51,6 +83,26 @@
     The average distance between seamounts within the {{#isCollection}}collection{{/isCollection}}{{^isCollection}} area of 
     interest {{/isCollection}} is <strong>{{avg_dist_seamounts}} km</strong>.
   {{/has_seamounts}}
+    <table> 
+    <thead>
+      <tr>
+        <th></th>
+        <th>Shallow (0 - 200m)</a></th>
+        <th>Bathyal (200 - 4000m)</th>
+        <th>Abyssal (> 4000m)</th>
+      </tr>
+     </thead>
+     <tbody> 
+        <tr>
+          <td>Count</td>
+          {{#bio_seamounts}}
+            <td>{{SHALLOW}}</td>
+            <td>{{BATHYAL}}</td>
+            <td>{{ABYSSAL}}</td>
+          {{/bio_seamounts}}
+        </tr>
+    </tbody>
+  </table>
   <div><a class="details" href="#">show details</a>
     <div class="hidden">
       <div class="list-header">The physical structure of some seamounts enables the formation of hydrographic features and current flows that can:</div>
@@ -59,6 +111,34 @@
         <li>Keep species and production processes concentrated over the seamount  </li>
         <li>Have a concentration of zooplankton and mesopelagic fish meaning rich feeding grounds and spawning areas for fish and higher predators, and hence fisheries. Seamounts are a hotspot for biodiverstiy but are still understudied.</li>
       </ol>
+    </div>
+  </div>
+</div>
+<div class="reportSection tableContainer">
+  <h4>Hydrothermal Vents</h4>
+    <table> 
+    <thead>
+      <tr>
+        <th></th>
+        <th>Confirmed</th>
+        <th>Suspected</a></th>
+      </tr>
+     </thead>
+     <tbody> 
+        <tr>
+          <td>Count</td>
+          {{#vents}}
+            <td>{{CONFIRMED}}</td>
+            <td>{{SUSPECTED}}</td>
+          {{/vents}}
+        </tr>
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+        Hydrothermal vents host communities that not rely on photosynthesis for primary production. Both systems are largely driven by chemosynthetic derived energy. They are generally located along spreading ridges and are considered as “oasis of biodiversity” in deep environment. They may represent hotspot of biodiversity, especially for the shallower ones. Theses ecosystems are extremely sensitive due to the high level of endemics species and their slow recovery potential.
+      </p>
     </div>
   </div>
 </div>
