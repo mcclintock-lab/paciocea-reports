@@ -17,7 +17,6 @@ class EconomyTab extends BaseReportTab
   dependencies: [
     'CoastalCatch'
     'Size'
-    'DeepSea'
     'Fisheries'
     'PacioceaAquaculture'
     'Tourism'
@@ -45,8 +44,8 @@ class EconomyTab extends BaseReportTab
     size = @recordSet('Size', 'Size').float('SIZE_IN_KM')
     new_size =  @addCommas size
 
-    mining = @recordSet('DeepSea', 'Mining').toArray()
-    mining = @processMiningData mining
+    #mining = @recordSet('DeepSea', 'Mining').toArray()
+    #mining = @processMiningData mining
     
     tourism_res = @recordSet('Tourism', 'ResultMsg')
     
@@ -85,7 +84,7 @@ class EconomyTab extends BaseReportTab
 
       coastal_catch: coastal_catch
       isCollection: isCollection
-      mining:mining
+
       comm_sub_catch: comm_sub_catch
       ocean_catch: ocean_catch
 
