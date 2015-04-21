@@ -15,7 +15,8 @@ class BiodiversityTab extends BaseReportTab
   template: templates.biodiversity
   dependencies: [
     'Biodiversity',
-    'DeepSea'
+    'DeepSea',
+    'ThreatenedSpecies'
   ]
 
   render: () ->
@@ -35,6 +36,24 @@ class BiodiversityTab extends BaseReportTab
     bio_seamounts = @recordSet('Biodiversity', 'Seamounts').toArray()
     vents = @recordSet('Biodiversity', 'Vents').toArray()
     
+    threatened_species = @recordSet('ThreatenedSpecies', 'Threat').toArray()
+    RF_BIN1 = 0
+    RF_BIN2 = 0
+    RF_BIN3 = 0
+    RF_BIN4 = 0
+    reef_fish = @recordSet('ThreatenedSpecies', 'RFish').toArray()
+    if reef_fish?.length > 0
+      for rf in reef_fish
+        sensitivity = rf.SENSTV
+        if sensitivity == "less than 0.48"
+          RF_BIN1 = rf.AREA_PERC
+        else if sensitivity == "0.48 - 0.55"
+          RF_BIN2 = rf.AREA_PERC
+        else if sensitivity == "0.55 - 0.63"
+          RF_BIN3 = rf.AREA_PERC
+        else
+          RF_BIN4 = rf.AREA_PERC
+
     hasMPAs = mpa_cats?.length > 0
     isCollection = @model.isCollection()
 
@@ -77,7 +96,11 @@ class BiodiversityTab extends BaseReportTab
       deep_coral: deep_coral
       bio_seamounts: bio_seamounts
       vents: vents
-
+      threatened_species: threatened_species
+      RF_BIN1: RF_BIN1
+      RF_BIN2: RF_BIN2
+      RF_BIN3: RF_BIN3
+      RF_BIN4: RF_BIN1
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
