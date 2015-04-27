@@ -14,7 +14,7 @@ class AdaptationTab extends BaseReportTab
   timeout: 120000
   template: templates.adaptation
   dependencies: [
-    'Population'
+    'Population', 'Adaptation'
   ]
 
 
@@ -23,6 +23,12 @@ class AdaptationTab extends BaseReportTab
     numpeople = @recordSet('Population', 'Population').float('Population')
     numpeople = @addCommas numpeople
     percpeople = @recordSet('Population', 'Population').float('PERC_POP')
+
+    impact_on_gdp = @recordSet('Adaptation', 'ImpactOnGDP').toArray()
+    num_hazards = @recordSet('Adaptation', 'NumberOfHazards').toArray()
+    num_affected = @recordSet('Adaptation', 'NumAffected').toArray()
+    avg_damage = @recordSet('Adaptation', 'AvgDamageCost').toArray()
+
     #show tables instead of graph for IE
     if window.d3
       d3IsPresent = true
@@ -41,6 +47,11 @@ class AdaptationTab extends BaseReportTab
 
       numpeople: numpeople
       percpeople: percpeople
+
+      impact_on_gdp: impact_on_gdp
+      num_hazards: num_hazards
+      num_affected: num_affected
+      avg_damage: avg_damage
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()

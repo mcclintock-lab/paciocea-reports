@@ -11,3 +11,110 @@
   <p class="large">The total population of the countries within the sketch is <strong>{{numpeople}}</strong>, which is <strong>{{percpeople}}%</strong> of the population within the PACIOCEA region.
   </p>
 </div>
+
+<div class="reportSection tableContainer">
+  <h4>Natural Hazards: Number of Hazards<a href="#" data-toggle-node="54d9796efa94e697759d0a7f" data-visible="false">show layer</a></h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Number of Hazards</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#num_hazards}}
+        <tr>
+          <td>{{Country}}</td>
+          <td>{{Disasters}}</td>
+        </tr>
+      {{/num_hazards}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		A natural hazard is an event occurring naturally that will have a negative effect on people or the environment. The PICTs are very vulnerable to natural disasters, especially cyclones, droughts, infectious diseases, earthquakes and tsunamis. The effects of these natural hazards are multifaceted. Most of the effects have adverse economic, environment and human consequences. Some natural hazards, as extreme waves, drought, floods and sea level rise have shown a significant increasing trend in the last decades related to anthropogenic global warming. It’s important to consider the very strong El Niño impact on these variables. Since the 1950s, natural disasters have directly affected more than 3.4 million people and led to more than 1,700 reported deaths in the region (not considering Papua New Guinea). In the 1990s alone, reported natural disasters cost the PICTs 2.8 billion USD.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Natural Hazards: Impact on GDP<a href="#" data-toggle-node="54d9796efa94e697759d0a7d" data-visible="false">show layer</a></h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Impact on GDP (%)</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#impact_on_gdp}}
+        <tr>
+          <td>{{Country}}</td>
+          <td>{{Impact}}</td>
+        </tr>
+      {{/impact_on_gdp}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		Natural hazards – such as tsunamis, earthquakes, cyclones and floods – are costly to society, in terms of both human and financial losses. Governments ultimately bear the full cost of the havoc brought by natural disasters, which can create an enormous strain on limited government budgets, especially in developing countries. This is even before we begin to contemplate the development impact and how the poorest of the poor are disproportionately affected. By contrast, developing countries do not have the same degree of access to financial and insurance markets. They face limited revenue streams, limited fiscal flexibility, and limited access to quick liquidity in the wake of an event. This is particularly so for Small Island Developing States, such as the Pacific island nations.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Natural Hazards: Number of People Affected<a href="#" data-toggle-node="54d9796efa94e697759d0a81" data-visible="false">show layer</a></h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Number of People</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#num_affected}}
+        <tr>
+          <td>{{Country}}</td>
+          <td>{{People}}</td>
+        </tr>
+      {{/num_affected}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		The countries with the most people affected are Papua New Guinea and Fiji, followed by Vanuatu and the Solomon Islands. These countries also have the highest number of disasters and are strongly impacted by cyclonic, volcanic and earthquake activities. Western Samoa and Tonga present a relatively low number of disasters but a high number of paeople are affected. There have been three key historical stages in disaster risk management within the PICTs. Initially it would appear that Pacific island communities maintained local control over disaster response by maintaining food security, having resilient shelters and through local and regional social, political and economic interdependence. Many communities are still quite resilient, especially in rural areas.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="reportSection tableContainer">
+  <h4>Natural Hazards: Average Damage Cost<a href="#" data-toggle-node="54d9796efa94e697759d0a83" data-visible="false">show layer</a></h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Average Damage (USD)</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#avg_damage}}
+        <tr>
+          <td>{{Country}}</td>
+          <td>${{Cost}}</td>
+        </tr>
+      {{/avg_damage}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		Since the 1950s, natural disasters have directly affected more than 3.4 million people and led to more than 1,700 reported deaths in the region (not considering Papua New Guinea). In the 1990s alone, reported natural disasters cost the PICTs 2.8 billion USD.
+      </p>
+    </div>
+  </div>
+</div>
