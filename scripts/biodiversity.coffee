@@ -36,6 +36,22 @@ class BiodiversityTab extends BaseReportTab
     bio_seamounts = @recordSet('Biodiversity', 'Seamounts').toArray()
     vents = @recordSet('Biodiversity', 'Vents').toArray()
     
+    coral_threats = @recordSet('Biodiversity', 'CoralThreats').toArray()
+    if coral_threats?.length > 0
+      for ct in coral_threats
+        if ct.THREAT == "Low"
+          CORAL_THREAT_LOW = ct.PERC
+        else if ct.THREAT == "Medium"
+          CORAL_THREAT_MEDIUM = ct.PERC
+        else if ct.THREAT == "High"
+          CORAL_THREAT_HIGH = ct.PERC
+        else
+          CORAL_THREAT_VHIGH = ct.PERC
+    else
+      CORAL_THREAT_LOW = 0
+      CORAL_THREAT_MEDIUM = 0
+      CORAL_THREAT_HIGH = 0
+      CORAL_THREAT_VHIGH = 0
     threatened_species = @recordSet('ThreatenedSpecies', 'Threat').toArray()
     RF_BIN1 = 0
     RF_BIN2 = 0
@@ -53,6 +69,24 @@ class BiodiversityTab extends BaseReportTab
           RF_BIN3 = rf.AREA_PERC
         else
           RF_BIN4 = rf.AREA_PERC
+
+    bathyal_seamounts = @recordSet('ThreatenedSpecies', 'BSeamounts').toArray()
+    BIOREGION_5 = 0
+    BIOREGION_6 = 0
+    BIOREGION_12 = 0
+    BIOREGION_14 = 0
+
+    if bathyal_seamounts?.length > 0
+      for bs in bathyal_seamounts
+        name = bs.province
+        if name.indexOf("5") >= 0
+          BIOREGION_5 = bs.COUNT
+        else if name.indexOf("6") >= 0
+          BIOREGION_6 = bs.COUNT
+        else if name.indexOf("12") >= 0
+          BIOREGION_12 = bs.COUNT
+        else if name.indexOf("14") >= 0
+          BIOREGION_14 = bs.COUNT
 
     hasMPAs = mpa_cats?.length > 0
     isCollection = @model.isCollection()
@@ -101,6 +135,17 @@ class BiodiversityTab extends BaseReportTab
       RF_BIN2: RF_BIN2
       RF_BIN3: RF_BIN3
       RF_BIN4: RF_BIN1
+      coral_threats: coral_threats
+
+      CORAL_THREAT_LOW:CORAL_THREAT_LOW
+      CORAL_THREAT_MEDIUM:CORAL_THREAT_MEDIUM
+      CORAL_THREAT_HIGH:CORAL_THREAT_HIGH
+      CORAL_THREAT_VHIGH:CORAL_THREAT_VHIGH
+
+      BIOREGION_5: BIOREGION_5
+      BIOREGION_6: BIOREGION_6
+      BIOREGION_12: BIOREGION_12
+      BIOREGION_14: BIOREGION_14
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
