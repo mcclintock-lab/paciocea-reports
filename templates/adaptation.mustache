@@ -6,10 +6,72 @@
 </div>
 {{/sketchClass.deleted}}
 
+<!---
 <div class="reportSection">
   <h4>Population<a href="#" data-toggle-node="54d9796efa94e697759d0a86" data-visible="false">show layer</a></h4>
   <p class="large">The total population of the countries within the sketch is <strong>{{numpeople}}</strong>, which is <strong>{{percpeople}}%</strong> of the population within the PACIOCEA region.
   </p>
+    <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		Rapid population growth characterizes the region and has doubled since 1975 and is expected to double again by 2050. This is mainly due to Papua New Guinea’s, Solomon’s and Vanuatu’s rapid population increase rates. Papua New Guinea represents 70% of the total of the PICTs population in 2013.
+      </p>
+    </div>
+  </div>
+</div>
+-->
+<div class="reportSection tableContainer">
+  <h4>Population Density<a href="#" data-toggle-node="" data-visible="false">show layer</a></h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Population Density (Inhabitants/km<super>2</super>)</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#pop_density}}
+        <tr>
+          <td>{{Country}}</td>
+          <td>{{Density}}</td>
+        </tr>
+      {{/pop_density}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		Papua New Guinea and its Melanesian neighbours count for 88% of the Pacific Island population (PNG =70%). These populations live on the biggest islands, and population density in the sub-region remains very low, except in cities. Micronesian and Polynesian countries have smaller populations, but their territories are archipelagos composed mainly of small islands, atolls and a few high islands. Density there is higher and reaches high values (higher than Japan or India), which are probably underestimated due to numerous uninhabited islands entering the calculation. These 2 sub-regions are also the most urbanized, and densities can reach locally, on some atolls, values comparable to those of Hong-Kong or Sydney. In many countries, population is concentrated on a few main islands and densities, which are higher there, will keep increasing with rapid population growth and rural emigration to urban places of these islands.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Net Migration<a href="#" data-toggle-node="" data-visible="false">show layer</a></h4>
+    <table> 
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Net Migration Rate (%)</th>
+      </tr>
+     </thead>
+     <tbody> 
+      {{#net_migration}}
+        <tr>
+          <td>{{Country}}</td>
+          <td>{{Migration}}</td>
+        </tr>
+      {{/net_migration}}
+    </tbody>
+  </table>
+  <div><a class="details" href="#">show details</a>
+    <div class="hidden">
+      <p>
+		Emigration acts as a major driving force in Polynesia and Micronesia and explains their slowest growth, whereas Melanesia is lacking emigration possibilities. In 2010, about 850 000 Pacific-born people (or from Pacific ethnic-descent) lived in Pacific Rim countries (New Zealand, Australia, USA, Canada, with Asia being of increasing importance). This is more than the total population of Micronesia or Polynesia and it has real impact on national economies through remittances that can represent close to 30% of the GDP for some countries.
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="reportSection tableContainer">
