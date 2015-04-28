@@ -29,7 +29,20 @@ class AdaptationTab extends BaseReportTab
 
     pop_density =  @recordSet('AdPop', 'PopDensity').toArray()
     net_migration =  @recordSet('AdPop', 'NetMig').toArray()
-
+    low_lands = @recordSet('AdPop', 'LowLands').toArray()
+    
+    if low_lands?.length > 0
+      LL_BIN_0 = low_lands[0].value
+      LL_BIN_1 = low_lands[1].value
+      LL_BIN_2 = low_lands[2].value
+      LL_BIN_3 = low_lands[3].value
+      LL_BIN_4 = low_lands[4].value
+    else
+      LL_BIN_0 = 0
+      LL_BIN_1 = 0
+      LL_BIN_2 = 0
+      LL_BIN_3 = 0
+      LL_BIN_4 = 0
 
     impact_on_gdp = @recordSet('Adaptation', 'ImpactOnGDP').toArray()
     num_hazards = @recordSet('Adaptation', 'NumberOfHazards').toArray()
@@ -43,8 +56,6 @@ class AdaptationTab extends BaseReportTab
       d3IsPresent = false
 
     attributes = @model.getAttributes()
-    
-    
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -57,12 +68,18 @@ class AdaptationTab extends BaseReportTab
       num_hazards: num_hazards
       num_affected: num_affected
       avg_damage: avg_damage
-
       numpeople: numpeople
       percpeople: percpeople
 
       pop_density: pop_density
       net_migration: net_migration
+      low_lands: low_lands
+
+      LL_BIN_0:LL_BIN_0
+      LL_BIN_1:LL_BIN_1
+      LL_BIN_2:LL_BIN_2
+      LL_BIN_3:LL_BIN_3
+      LL_BIN_4:LL_BIN_4
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
